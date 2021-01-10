@@ -1,0 +1,139 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    position: relative;
+    overflow: hidden;
+    background: white;
+
+    &.header-desktop {
+        @media #{$noDesktop} {
+            display: none;
+        }
+    }
+
+    &.header-mobile {
+        display: none;
+
+        @media #{$noDesktop} {
+            display: flex;
+        }
+    }
+
+    nav {
+        border-right: 1px solid lightgrey;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+
+        @media #{$noDesktop} {
+            border-right: 1px solid #ff8954;
+        }
+
+        &:hover {
+            background: url("/img/default_pattern.png");
+            background-position: 520px 0;
+            transition: 15s linear;
+        }
+
+        a {
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            color: black;
+        }
+
+        &.logo {
+            @extend %fcc;
+            background: $main-color1;
+
+            a {
+                width: 300px;
+
+                @media #{$mobile360} {
+                    width: 280px;
+                }
+
+                @media #{$mobile320} {
+                    width: 240px;
+                }
+
+                img {
+                    width: 175px;
+                }
+            }
+        }
+
+        &.item-contacts {
+            width: 35rem;
+            background: $main-color1;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: .2s ease-out;
+            display: flex;
+
+            @media #{$tablet} {
+                max-width: 100px;
+            }
+
+            &:hover {
+                .line-container {
+                    .line {
+                        &.line-top, &.line-bot {
+                            width: 2rem;
+                        }
+                    }
+                }
+            }
+
+            .line-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .line {
+                    width: 2rem;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    margin: 2.5px 0;
+                    transition: .2s ease-in-out;
+
+                    &.line-top {
+                        width: 1rem;
+                        align-self: flex-start;
+                    }
+
+                    &.line-bot {
+                        width: 1rem;
+                        align-self: flex-end;
+                    }
+                }
+            }
+        }
+    }
+
+    .translation {
+        width: 25rem;
+        height: 100%;
+
+        &__ru, &__en {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                color: $main-color1;
+            }
+        }
+    }
+}
