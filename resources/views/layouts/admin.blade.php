@@ -8,12 +8,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+@include('layouts.admin-cover')
+
 <main id="admin-app">
     @include('layouts.admin-sidebar')
     @yield('admin-content')
 </main>
 
 @include('layouts.scripts')
-
 </body>
 </html>

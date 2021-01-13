@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Catalog extends Model
 {
     protected $fillable = [
-        'active', 'brand_id','name','pdfPath','imgPath'
+        'active', 'brand_id','name', 'name_en', 'pdfPath','imgPath'
     ];
 
     public function brands(){

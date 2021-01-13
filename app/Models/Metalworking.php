@@ -9,6 +9,6 @@ class Metalworking extends Model
     protected $table = 'metalworking';
 
     protected $fillable = [
-        'active', 'position', 'name', 'description', 'imgPath'
+        'active', 'position', 'name', 'name_en', 'description', 'imgPath'
     ];
 }

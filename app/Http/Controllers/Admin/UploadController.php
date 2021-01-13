@@ -38,8 +38,8 @@ class UploadController extends Controller
     {
         try {
             $time = time();
-            $name = $time . '__' .$request->file('pdf_file')->getClientOriginalName();
-            $request->file('pdf_file')->move(public_path('/uploads/pdf'), $name);
+            $name = $time . '__' .$request->pdf->getClientOriginalName();
+            $request->pdf->move(public_path('/uploads/pdf'), $name);
             return response()->json(["path" => '/uploads/pdf/'.$name]);
         } catch (Exception $e) {
             return response()->json(["message" => $e->getMessage()], 400);

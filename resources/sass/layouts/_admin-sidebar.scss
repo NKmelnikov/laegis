@@ -1,23 +1,23 @@
 .admin-sidebar-wrapper {
     display: flex;
     flex-direction: column;
-
     width: 250px;
     height: 100%;
-    border-right:1px solid #bdbdbd;
 
     a {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         text-decoration: none;
         width: 100%;
         height: 40px;
-        background: lightgray;
         font-size: 18px;
+        padding-left: 20px;
+        color: #4e515a!important;
 
         &:hover {
-            background: grey;
+            background: lightgray;
+            text-decoration: none;
         }
     }
 }

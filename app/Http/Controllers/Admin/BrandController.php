@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
 use App\Services\Admin\BrandService;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class BrandController
         $this->brandService = new BrandService(Brand::class);
     }
 
-    private function getValidatorRules($isUpdateMethod = false) {
+    private function getValidatorRules($isUpdateMethod = false): array {
 
         return [
             "active" => "required",
@@ -30,9 +31,26 @@ class BrandController
         ];
     }
 
+    public function getCopyView(Request $request): Renderable {
+        $entity = $this->brandService->getBySlug($request);
+        $entity->action = 'copy';
+        return view('admin.brand.edit')->with(['entity' => $entity]);
+    }
+
+    public function getEditView(Request $request): Renderable {
+        $entity = $this->brandService->getBySlug($request);
+        $entity->action = 'edit';
+        return view('admin.brand.edit')->with(['entity' => $entity]);
+    }
+
     public function getAll(): JsonResponse
     {
         return $this->brandService->getAll();
+    }
+
+    public function getAllPaginated(): JsonResponse
+    {
+        return $this->brandService->getAllPaginated();
     }
 
     public function getBySlug(Request $request): JsonResponse
@@ -60,8 +78,28 @@ class BrandController
         return $this->brandService->delete($request);
     }
 
-    public function updatePosition(Request $request)
+    public function updatePosition(Request $request): JsonResponse
     {
         $this->brandService->updatePosition($request);
+    }
+
+    public function updatePositionManually(Request $request): JsonResponse
+    {
+        return $this->brandService->updatePositionManually($request);
+    }
+
+    public function bulkActivate(Request $request): JsonResponse
+    {
+        return $this->brandService->bulkActivate($request);
+    }
+
+    public function bulkDeactivate(Request $request): JsonResponse
+    {
+        return $this->brandService->bulkDeactivate($request);
+    }
+
+    public function bulkDelete(Request $request): JsonResponse
+    {
+        return $this->brandService->bulkDelete($request);
     }
 }

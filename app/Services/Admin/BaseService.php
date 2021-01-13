@@ -5,6 +5,7 @@ namespace App\Services\Admin;
 
 
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +25,16 @@ class BaseService
     public function getAll()
     {
         try {
-            return response()->json($this->model::where('active', 1)->orderBy('position')->get());
+            return response()->json($this->model::orderBy('position')->get());
+        } catch (Exception $e) {
+            return response()->json(["message" => $e->getMessage()], 400);
+        }
+    }
+
+    public function getAllPaginated(): JsonResponse
+    {
+        try {
+            return response()->json($this->model::orderBy('position')->paginate(15));
         } catch (Exception $e) {
             return response()->json(["message" => $e->getMessage()], 400);
         }
@@ -56,7 +66,7 @@ class BaseService
 
         $validator = Validator::make($_request, $rules);
         if ($validator->fails()) {
-            return response()->json(['validationErrors' => $validator->errors()], 400);
+            return response()->json(['validationErrors' => $validator->errors()]);
         }
 
         try {
@@ -74,12 +84,11 @@ class BaseService
 
         $validator = Validator::make($_request, $rules);
         if ($validator->fails()) {
-            return response()->json(['validationErrors' => $validator->errors()], 400);
+            return response()->json(['validationErrors' => $validator->errors()]);
         }
 
         try {
             $copy = $this->model::find($request->all()['id'])->replicate()->fill($_request);
-            $copy->position = $_request['position'] - 1;
             $copy->save();
             $this->updatePosition();
             return response()->json(["message" => "success"]);
@@ -117,46 +126,70 @@ class BaseService
         return $this->model::orderBy('position')->get();
     }
 
+    public function updatePositionManually(Request $request = null): JsonResponse
+    {
+
+        $data = $request['data'];
+        $curr = $data['currentPosition'];
+        $new = $data['newPosition'];
+
+        if($new == 1) {
+            $new = 0;
+        } else if ($new < $curr && $new == $curr -1) {
+            $new = $new - 1;
+        } else if ($new > $curr && $new == $curr +1) {
+            $new = $new + 1;
+        }
+
+        try {
+            $this->model::where('position', $curr)->update(['position' => $new]);
+            $this->updatePosition();
+        } catch (Exception $e) {
+            return response()->json(["message" => $e->getMessage()], 400);
+        }
+
+        return response()->json(["message" => "success"]);
+    }
+
     public function bulkActivate(Request $request)
     {
-        $items = json_decode($request['data'], true);
+        $items = $request['data'];
         foreach ($items as $i => $item) {
             try {
                 $this->model::where('id', $item['id'])->update(['active' => 1]);
             } catch (Exception $e) {
-                return response()->json(["message" => $e->getMessage()], 400);
+                return response()->json(['message' => $e->getMessage()], 400);
             }
         }
-        return response()->json(["message" => "activated"]);
+        return response()->json(['message' => 'success']);
     }
 
     public function bulkDeactivate(Request $request)
     {
-        $items = json_decode($request['data'], true);
+        $items = $request['data'];
         foreach ($items as $i => $item) {
             try {
                 $this->model::where('id', $item['id'])->update(['active' => 0]);
             } catch (Exception $e) {
-                return response()->json(["message" => $e->getMessage()], 400);
+                return response()->json(['message' => $e->getMessage()], 400);
             }
         }
-        return response()->json(["message" => "deactivated"]);
-
+        return response()->json(["message" => "success"]);
     }
 
     public function bulkDelete(Request $request)
     {
-        $items = json_decode($request['data'], true);
+        $items = $request['data'];
         try {
             foreach ($items as $i => $item) {
                 $this->model::where('id', $item['id'])->delete();
             }
             $this->updatePosition();
         } catch (Exception $e) {
-            return response()->json(["message" => $e->getMessage()], 400);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
 
-        return response()->json(["message" => "deleted"]);
+        return response()->json(['message' => 'success']);
     }
 
     private function clearFrolaMessageProcess($text) {

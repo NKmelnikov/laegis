@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\News;
 use App\Services\Admin\NewsService;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class NewsController
 {
@@ -23,10 +25,25 @@ class NewsController
             "active" => "required",
             "slug" => ($isUpdateMethod) ? "required|min:2|max:200" : "required|min:2|max:200|unique:news",
             "title" => "required|min:2|max:255",
+            "title_en" => "required|min:2|max:255",
             "shortText" => "required|min:2|max:400",
+            "shortText_en" => "required|min:2|max:400",
             "article" => "required",
+            "article_en" => "required",
             "imgPath" => "required|string|min:2|max:255",
         ];
+    }
+
+    public function getCopyView(Request $request): Renderable {
+        $entity = $this->newsService->getBySlug($request);
+        $entity->action = 'copy';
+        return view('admin.news.edit')->with(['entity' => $entity]);
+    }
+
+    public function getEditView(Request $request): Renderable {
+        $entity = $this->newsService->getBySlug($request);
+        $entity->action = 'edit';
+        return view('admin.news.edit')->with(['entity' => $entity]);
     }
 
     public function getAll(): JsonResponse
@@ -34,9 +51,14 @@ class NewsController
         return $this->newsService->getAll();
     }
 
-    public function getNewsItemBySlug(Request $request): JsonResponse
+    public function getAllPaginated(): JsonResponse
     {
-        return $this->newsService->getNewsItemBySlug($request);
+        return $this->newsService->getAllPaginated();
+    }
+
+    public function getBySlug(Request $request): JsonResponse
+    {
+        return $this->newsService->getBySlug($request);
     }
 
     public function create(Request $request): JsonResponse
@@ -62,5 +84,25 @@ class NewsController
     public function updatePosition(Request $request)
     {
         $this->newsService->updatePosition($request);
+    }
+
+    public function updatePositionManually(Request $request): JsonResponse
+    {
+        return $this->newsService->updatePositionManually($request);
+    }
+
+    public function bulkActivate(Request $request): JsonResponse
+    {
+        return $this->newsService->bulkActivate($request);
+    }
+
+    public function bulkDeactivate(Request $request): JsonResponse
+    {
+        return $this->newsService->bulkDeactivate($request);
+    }
+
+    public function bulkDelete(Request $request): JsonResponse
+    {
+        return $this->newsService->bulkDelete($request);
     }
 }

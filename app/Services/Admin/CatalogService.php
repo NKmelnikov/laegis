@@ -3,14 +3,17 @@
 
 namespace App\Services\Admin;
 
+use App\Models\Catalog;
 use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function response;
 
 class CatalogService extends BaseService
 {
 
-    public function getAll()
+    public function getAll(): JsonResponse
     {
         $catalogs = DB::table('catalogs as c')
             ->leftJoin('brands as b', 'c.brand_id', '=', 'b.id')
@@ -27,6 +30,15 @@ class CatalogService extends BaseService
             ->get();
         try {
             return response()->json($catalogs);
+        } catch (Exception $e) {
+            return response()->json(["message" => $e->getMessage()], 400);
+        }
+    }
+
+    public function getById(Request $request)
+    {
+        try {
+            return Catalog::with('brands')->where('id', $request['id'])->first();
         } catch (Exception $e) {
             return response()->json(["message" => $e->getMessage()], 400);
         }
