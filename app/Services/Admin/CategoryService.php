@@ -24,7 +24,7 @@ class CategoryService extends BaseService
     public function getById(Request $request)
     {
         try {
-            return response()->json(Category::with('subcategories')->where('id', $request->all()['id'])->first());
+            return Category::with('subcategories')->where('id', $request['id'])->first();
         } catch (Exception $e) {
             return response()->json(["message" => $e->getMessage()], 400);
         }

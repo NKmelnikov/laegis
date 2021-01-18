@@ -1,0 +1,133 @@
+.admin-entity-wrapper {
+    width: 100%;
+
+    .md-primary {
+        height: 50px;
+    }
+
+    .search-input{
+        width: 200px;
+        margin-right: 20px;
+    }
+
+    .img-cell {
+        width: 160px;
+
+        img {
+            height: 40px;
+        }
+    }
+
+    .option-container{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        a {
+            display: block;
+            margin-right: 5px;
+            transition: .1s ease-in;
+
+            &:hover {
+                transform: scale(1.2);
+                text-decoration: none;
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .pagination {
+        list-style: none;
+        display: flex;
+        height: 30px;
+        justify-content: flex-end;
+        margin-right: 30px;
+
+        li {
+            border-left: 1px solid lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 15px;
+
+            &:first-child {
+                border-left: none;
+            }
+
+            &.active {
+                background: #2d3748;
+                border: none;
+
+                a {
+                    color: white;
+                }
+            }
+
+
+            a {
+                transition: .1s ease-in;
+
+                &:hover {
+                    text-decoration: none;
+
+                }
+
+                .sr-only {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .md-button.change-position-btn {
+        min-width: 160px;
+    }
+
+    .md-field.search-input {
+    }
+
+    .alternative-toolbar {
+        height: 80px;
+
+        .md-toolbar-section-start {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            div {
+                font-size: 16px;
+                text-transform: uppercase;
+                margin-right: 5px;
+
+                &.current-position-sign {
+                    width: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: lightgray;
+                    height: 30px;
+                    border-radius: 4px;
+
+
+                }
+            }
+
+            input {
+                width: 60px;
+                height: 30px;
+                border-radius: 4px;
+                border: transparent;
+                margin-left: 5px;
+                font-size:16px;
+
+                &.active {
+                    outline: none;
+                }
+            }
+        }
+    }
+}

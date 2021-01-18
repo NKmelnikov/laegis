@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
 use App\Services\Admin\ProductService;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,6 @@ class ProductController
         $this->productService = new ProductService(Product::class);
     }
 
-    public function getAll() {
-        return $this->productService->getAll();
-    }
-
     private function getValidatorRules($isUpdateMethod = false): array
     {
 
@@ -29,13 +26,38 @@ class ProductController
             "subcategory_id" => "nullable",
             "active" => "required",
             "name" => "required|min:2|max:255",
-            "slug" => ($isUpdateMethod) ? "required|min:2|max:255" : "required|min:2|max:255|unique:products_oil",
+            "name_en" => "required|min:2|max:255",
+            "slug" => ($isUpdateMethod) ? "required|min:2|max:255" : "required|min:2|max:255|unique:products",
             "description" => "nullable",
+            "description_en" => "nullable",
             "spec" => "nullable",
-            "imgPath" => "required|min:2|max:255",
-            "pdf1Path" => "nullable|min:2|max:255",
-            "pdf2Path" => "nullable|min:2|max:255",
+            "spec_en" => "nullable",
+            "imgPath" => "required",
+            "pdf1Path" => "nullable",
+            "pdf2Path" => "nullable",
         ];
+    }
+
+    public function getCopyView(Request $request): Renderable {
+        $entity = $this->productService->getBySlug($request);
+        $entity->action = 'copy';
+        return view('admin.product.edit')->with(['entity' => $entity]);
+    }
+
+    public function getEditView(Request $request): Renderable {
+        $entity = $this->productService->getBySlug($request);
+        $entity->action = 'edit';
+        return view('admin.product.edit')->with(['entity' => $entity]);
+    }
+
+    public function getAll(): JsonResponse
+    {
+        return $this->productService->getAll();
+    }
+
+    public function getAllPaginated(): JsonResponse
+    {
+        return $this->productService->getAllPaginated();
     }
 
     public function getAllBrand(): JsonResponse
@@ -85,5 +107,26 @@ class ProductController
 
     public function updatePosition(Request $request) {
         $this->productService->updatePosition($request);
+    }
+
+
+    public function updatePositionManually(Request $request): JsonResponse
+    {
+        return $this->productService->updatePositionManually($request);
+    }
+
+    public function bulkActivate(Request $request): JsonResponse
+    {
+        return $this->productService->bulkActivate($request);
+    }
+
+    public function bulkDeactivate(Request $request): JsonResponse
+    {
+        return $this->productService->bulkDeactivate($request);
+    }
+
+    public function bulkDelete(Request $request): JsonResponse
+    {
+        return $this->productService->bulkDelete($request);
     }
 }

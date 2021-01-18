@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $table = 'products_oil';
+    protected $table = 'products';
 
     protected $fillable = [
         'brand_id',
@@ -15,9 +15,12 @@ class Product extends Model
         'active',
         'position',
         'name',
+        'name_en',
         'slug',
         'description',
+        'description_en',
         'spec',
+        'spec_en',
         'imgPath',
         'pdf1Path',
         'pdf2Path',

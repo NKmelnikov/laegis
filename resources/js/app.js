@@ -1,19 +1,20 @@
+require('./bootstrap');
+
 import Vue from "vue";
 import moment from 'moment'
+
+if(window.location.pathname.includes('admin')) {
+    require('vue-material/dist/vue-material.min.css')
+    require('vue-material/dist/theme/default.css')
+    require('froala-editor/js/froala_editor.pkgd.min.js')
+    require('froala-editor/css/froala_editor.pkgd.min.css')
+    require('froala-editor/css/froala_style.min.css')
+}
+
 import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
-require('froala-editor/js/froala_editor.pkgd.min.js')
-
-// Require Froala Editor css files.
-require('froala-editor/css/froala_editor.pkgd.min.css')
-require('froala-editor/css/froala_style.min.css')
-
 // Import and use Vue Froala lib.
 import VueFroala from 'vue-froala-wysiwyg'
 Vue.use(VueFroala)
-
-require('./bootstrap');
 
 window.Vue = require('vue');
 Vue.use(VueMaterial)
@@ -38,7 +39,19 @@ Vue.component('admin-catalog-edit', require('./components/catalog/edit.vue').def
 Vue.component('admin-service', require('./components/service/index.vue').default);
 Vue.component('admin-service-edit', require('./components/service/edit.vue').default);
 
-const app = new Vue({
-    el: '#admin-app',
-});
+Vue.component('admin-category', require('./components/category/index.vue').default);
+Vue.component('admin-category-edit', require('./components/category/edit.vue').default);
+
+Vue.component('admin-subcategory', require('./components/subcategory/index.vue').default);
+Vue.component('admin-subcategory-edit', require('./components/subcategory/edit.vue').default);
+
+Vue.component('admin-product', require('./components/product/index.vue').default);
+Vue.component('admin-product-edit', require('./components/product/edit.vue').default);
+
+if(window.location.pathname.includes('admin')) {
+    const app = new Vue({
+        el: '#admin-app',
+    });
+}
+
 

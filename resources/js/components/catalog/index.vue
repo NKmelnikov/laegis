@@ -1,5 +1,5 @@
 <template>
-    <section class="admin-brand-wrapper">
+    <section class="admin-entity-wrapper">
         <md-toolbar class="md-primary">
             <h3 class="md-title">Каталоги</h3>
         </md-toolbar>
@@ -38,13 +38,13 @@
             </md-table-toolbar>
 
             <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="multiple" md-auto-select>
-                <md-table-cell md-label="Обложка">
-                    <img class="img-cell" :src="item.imgPath" alt="">
+                <md-table-cell  class="img-cell" md-label="Обложка">
+                    <img :src="item.imgPath" alt="">
                 </md-table-cell>
                 <md-table-cell md-label="No." md-sort-by="position">{{ item.position }}</md-table-cell>
                 <md-table-cell md-label="Активен" md-sort-by="active">{{ item.active }}</md-table-cell>
                 <md-table-cell md-label="Название" md-sort-by="name">{{ item.name }}</md-table-cell>
-                <md-table-cell md-label="Название" md-sort-by="name">{{ item.pdfPath }}</md-table-cell>
+                <md-table-cell md-label=".pdf" md-sort-by="pdfPath">{{ item.pdfPath }}</md-table-cell>
                 <md-table-cell md-label="Дата создания" md-sort-by="created_at">{{ item.created_at | formatDate }}</md-table-cell>
                 <md-table-cell md-label="Опции" md-sort-by="title">
                     <div class="option-container">
@@ -64,141 +64,6 @@
         </pagination>
     </section>
 </template>
-
-<style lang="scss">
-.admin-brand-wrapper {
-    width: 100%;
-}
-
-.md-primary {
-    height: 50px;
-}
-
-.search-input{
-    width: 200px;
-    margin-right: 20px;
-}
-
-.img-cell {
-    height: 40px!important;
-    width: 150px;
-}
-
-.option-container{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    a {
-        display: block;
-        margin-right: 5px;
-        transition: .1s ease-in;
-
-        &:hover {
-            transform: scale(1.2);
-            text-decoration: none;
-        }
-
-        svg {
-            width: 20px;
-            height: 20px;
-        }
-    }
-}
-
-.pagination {
-    list-style: none;
-    display: flex;
-    height: 30px;
-    justify-content: flex-end;
-    margin-right: 30px;
-
-    li {
-        border-left: 1px solid lightgray;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 15px;
-
-        &:first-child {
-            border-left: none;
-        }
-
-        &.active {
-            background: #2d3748;
-            border: none;
-            border-radius: 4px;
-
-            a {
-                color: white!important;
-            }
-        }
-
-
-        a {
-            transition: .1s ease-in;
-            color: #2d3748!important;
-            &:hover {
-                text-decoration: none;
-
-            }
-
-            .sr-only {
-                display: none;
-            }
-        }
-    }
-}
-
-.md-button.change-position-btn {
-    min-width: 160px;
-}
-
-.md-field.search-input {
-}
-
-.alternative-toolbar {
-    height: 80px;
-
-    .md-toolbar-section-start {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-
-        div {
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-right: 5px;
-
-            &.current-position-sign {
-                width: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: lightgray;
-                height: 30px;
-                border-radius: 4px;
-
-
-            }
-        }
-
-        input {
-            width: 60px;
-            height: 30px;
-            border-radius: 4px;
-            border: transparent;
-            margin-left: 5px;
-            font-size:16px;
-
-            &.active {
-                outline: none;
-            }
-        }
-    }
-}
-
-</style>
 
 <script>
 import {indexMixin} from '../../mixins/indexMixin.js'

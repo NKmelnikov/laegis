@@ -101,10 +101,79 @@ Route::prefix('admin')->group(function () {
     Route::post('/bulk-deactivate-service', [App\Http\Controllers\Admin\MetalworkingController::class, 'bulkDeactivate']);
     Route::post('/bulk-delete-service', [App\Http\Controllers\Admin\MetalworkingController::class, 'bulkDelete']);
     Route::post('/update-service-position-manually', [App\Http\Controllers\Admin\MetalworkingController::class, 'updatePositionManually']);
-
+//        category
+    Route::view('/category', 'admin.category.index');
+    Route::view('/category/create', 'admin.category.edit');
+    Route::get('/category/getAll', [App\Http\Controllers\Admin\CategoryController::class, 'getAll']);
+    Route::get('/category/getAllPaginated', [App\Http\Controllers\Admin\CategoryController::class, 'getAllPaginated']);
+    Route::get('/category/copy/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'getCopyView']);
+    Route::get('/category/edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'getEditView']);
+    Route::get('/category/delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'delete']);
+    Route::post('/create-category', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
+    Route::post('/copy-category', [App\Http\Controllers\Admin\CategoryController::class, 'copy']);
+    Route::post('/edit-category', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
+    Route::post('/bulk-activate-category', [App\Http\Controllers\Admin\CategoryController::class, 'bulkActivate']);
+    Route::post('/bulk-deactivate-category', [App\Http\Controllers\Admin\CategoryController::class, 'bulkDeactivate']);
+    Route::post('/bulk-delete-category', [App\Http\Controllers\Admin\CategoryController::class, 'bulkDelete']);
+    Route::post('/update-category-position-manually', [App\Http\Controllers\Admin\CategoryController::class, 'updatePositionManually']);
+//        subcategory
+    Route::view('/subcategory', 'admin.subcategory.index');
+    Route::view('/subcategory/create', 'admin.subcategory.edit');
+    Route::get('/subcategory/getAll', [App\Http\Controllers\Admin\SubcategoryController::class, 'getAll']);
+    Route::get('/subcategory/getAllPaginated', [App\Http\Controllers\Admin\SubcategoryController::class, 'getAllPaginated']);
+    Route::post('/subcategory/getByCategoryId', [App\Http\Controllers\Admin\SubcategoryController::class, 'getByCategoryId']);
+    Route::get('/subcategory/copy/{id}', [App\Http\Controllers\Admin\SubcategoryController::class, 'getCopyView']);
+    Route::get('/subcategory/edit/{id}', [App\Http\Controllers\Admin\SubcategoryController::class, 'getEditView']);
+    Route::get('/subcategory/delete/{id}', [App\Http\Controllers\Admin\SubcategoryController::class, 'delete']);
+    Route::post('/create-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'create']);
+    Route::post('/copy-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'copy']);
+    Route::post('/edit-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'update']);
+    Route::post('/bulk-activate-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'bulkActivate']);
+    Route::post('/bulk-deactivate-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'bulkDeactivate']);
+    Route::post('/bulk-delete-subcategory', [App\Http\Controllers\Admin\SubcategoryController::class, 'bulkDelete']);
+    Route::post('/update-subcategory-position-manually', [App\Http\Controllers\Admin\SubcategoryController::class, 'updatePositionManually']);
+//        products
+    Route::view('/product', 'admin.product.index');
+    Route::view('/product/create', 'admin.product.edit');
+    Route::get('/product/getAll', [App\Http\Controllers\Admin\ProductController::class, 'getAll']);
+    Route::get('/product/getAllPaginated', [App\Http\Controllers\Admin\ProductController::class, 'getAllPaginated']);
+    Route::get('/product/copy/{slug}', [App\Http\Controllers\Admin\ProductController::class, 'getCopyView']);
+    Route::get('/product/edit/{slug}', [App\Http\Controllers\Admin\ProductController::class, 'getEditView']);
+    Route::get('/product/delete/{slug}', [App\Http\Controllers\Admin\ProductController::class, 'delete']);
+    Route::post('/create-product', [App\Http\Controllers\Admin\ProductController::class, 'create']);
+    Route::post('/copy-product', [App\Http\Controllers\Admin\ProductController::class, 'copy']);
+    Route::post('/edit-product', [App\Http\Controllers\Admin\ProductController::class, 'update']);
+    Route::post('/bulk-activate-product', [App\Http\Controllers\Admin\ProductController::class, 'bulkActivate']);
+    Route::post('/bulk-deactivate-product', [App\Http\Controllers\Admin\ProductController::class, 'bulkDeactivate']);
+    Route::post('/bulk-delete-product', [App\Http\Controllers\Admin\ProductController::class, 'bulkDelete']);
+    Route::post('/update-product-position-manually', [App\Http\Controllers\Admin\ProductController::class, 'updatePositionManually']);
 });
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+Route::get('/', function () {
+    return redirect(app()->getLocale());
+});
+
+Route::get('/about', function () {
+    return redirect(app()->getLocale() . '/about');
+});
+
+Route::group([
+    'prefix' => '{locale}',
+    'where' => ['locale' => '[a-zA-Z]{2}'],
+    'middleware' => 'setlocale'
+], function() {
+
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+    Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+    Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
+    Route::get('/news/{slug}', [App\Http\Controllers\NewsController::class, 'item'])->name('news-item');
+    Route::get('/catalogs', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalogs');
+    Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services');
+});
+
+
+
+

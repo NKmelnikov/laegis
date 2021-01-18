@@ -15,6 +15,7 @@ export function indexMixin(entityName) {
                 axios.get(`/admin/${entityName}/getAllPaginated?page=${page}`)
                     .then((res) => {
                         this.entities = res.data;
+                        console.log(this.entities);
                         this.searched = res.data;
                     })
                     .catch((error) => {

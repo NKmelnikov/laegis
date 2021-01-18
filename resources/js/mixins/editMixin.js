@@ -27,6 +27,8 @@ export function editMixin(entityName) {
                     name_en: '',
                     description: '',
                     description_en: '',
+                    spec: '',
+                    spec_en: '',
                     slug: '',
                     title: '',
                     title_en: '',
@@ -130,7 +132,7 @@ export function editMixin(entityName) {
                 }
             },
 
-            uploadPdf() {
+            uploadPdf(key) {
                 const formData = new FormData();
                 formData.append('pdf', this.pdfToUpload);
                 axios.post('/upload-pdf', formData, {
@@ -139,14 +141,14 @@ export function editMixin(entityName) {
                     }
                 })
                     .then((res) => {
-                        this.entity.pdfPath = res.data.path
+                        this.entity['key'] = res.data.path
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             },
 
-            handlePdf: function (event) {
+            handlePdf: function (event, ref) {
                 const pdf = event.target.files[0];
                 const maxSize = 1000000000; // 1gb TODO put into config file
                 const allowedTypes = ['application/pdf'];
@@ -161,8 +163,7 @@ export function editMixin(entityName) {
                     return false;
                 }
                 this.pdfToUpload = pdf;
-                console.log(this.pdfToUpload);
-                this.uploadPdf();
+                this.uploadPdf(event.target.className);
             },
 
             actionTranslater(action) {

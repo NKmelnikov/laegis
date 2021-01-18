@@ -1,26 +1,39 @@
 <header class="header-desktop">
     <nav class="logo"><a href="#"><img src="{{asset('img/AEGIS_logo_white_en.png')}}" alt=""></a></nav>
     <nav class="item item1 item-main">
-        <a href="/">Главная</a>
+        <a href="{{ sprintf('/%s',app()->getLocale()) }}">Главная</a>
     </nav>
     <nav class="item item2 item-products">
-        <a href="/products">Продукция</a>
+        <a href="{{ sprintf('/%s/products',app()->getLocale()) }}">Продукция</a>
     </nav>
     <nav class="item item2 item-products">
-        <a href="/services">Услуги</a>
+        <a href="{{ sprintf('/%s/services',app()->getLocale()) }}">Услуги</a>
     </nav>
     <nav class="item item3 item-catalogs">
-        <a href="/catalogs">Брэнды и Каталоги</a>
+        <a href="{{ sprintf('/%s/catalogs',app()->getLocale()) }}">Брэнды и Каталоги</a>
     </nav>
     <nav class="item item4 item-news">
-        <a href="/news">Новости</a>
+        <a href="{{ sprintf('/%s/news',app()->getLocale()) }}">Новости</a>
     </nav>
     <nav class="item item5 item-about">
-        <a href="/about">О нас</a>
+        <a href="{{ sprintf('/%s/about',app()->getLocale()) }}">О нас</a>
     </nav>
+    {{app()->getLocale() }}
     <div class="translation">
-        <div class="translation__ru">RU</div>
-        <div class="translation__en">EN</div>
+        @foreach (config('app.available_locales') as $locale)
+            <div class="nav-item">
+                <a class="nav-link translation__{{app()->getLocale()}}"
+                   href="
+                    {{
+                    route(
+                        \Illuminate\Support\Facades\Route::currentRouteName(),
+                        array_merge(\Illuminate\Support\Facades\Route::current()->parameters(),
+                        ['locale'=> $locale])
+                        )
+                    }}"
+                   @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+            </div>
+        @endforeach
     </div>
     <!--  <nav class="item item6 item-translations">-->
     <!--    <div class="item-translations__ru">RU</div>-->
