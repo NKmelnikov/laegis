@@ -9,7 +9,7 @@
                 <div class="admin-form entity-create-form">
                     <md-field :md-counter="true">
                         <label>Заголовок</label>
-                        <md-input maxlength="50" v-model="entity.title"></md-input>
+                        <md-input maxlength="125" v-model="entity.title"></md-input>
                     </md-field>
                     <md-field>
                         <label>Окончание URL (/slug)</label>
@@ -44,7 +44,7 @@
                 <div class="admin-form">
                     <md-field :md-counter="true">
                         <label>Заголовок</label>
-                        <md-input maxlength="50" v-model="entity.title_en"></md-input>
+                        <md-input maxlength="125" v-model="entity.title_en"></md-input>
                     </md-field>
                     <md-field>
                         <label>Краткое описание</label>

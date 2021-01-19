@@ -9,11 +9,7 @@
     {!! JsonLd::generate() !!}
 @endsection
         <main class="about-wrapper">
-            <section class="header-container">
-                <div class="header-box container">
-                    <div class="header-box__title">{{ __('about/index.about') }}</div>
-                </div>
-            </section>
+            @include('layouts.header-second', ['message' => __('about/index.about')])
             <article class="about-container container">
                 <div class="first-section">
                     <div class="img-container">

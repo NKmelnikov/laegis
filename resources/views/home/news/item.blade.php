@@ -9,11 +9,7 @@
     {!! JsonLd::generate() !!}
 @endsection
 <main class="news-item-wrapper">
-    <section class="header-container">
-        <div class="header-box container">
-            <div class="header-box__title">{{ $item['title'] }}</div>
-        </div>
-    </section>
+    @include('layouts.header-second', ['message' => translate($item, 'title')])
     <div class="breadcrumbs container" id="breadcrumbs-products">
         <a
             class="breadcrumbs__item"
@@ -34,11 +30,7 @@
     </div>
     <section class="news-item-container container">
         <article class="news-item-container__article">
-            {!!
-                (app()->getLocale() !== 'ru' && !empty($item['article_' . app()->getLocale()]) )
-                ? $item['article_' . app()->getLocale()]
-                : $item->article
-             !!}
+            {!!translate($item, 'article')!!}
         </article>
     </section>
 

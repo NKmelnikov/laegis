@@ -2,33 +2,6 @@
 
 }
 
-.header-container {
-    height: 175px;
-    background: $main-color2;
-    border-bottom: 10px solid $main-color1;
-    margin-bottom: 40px;
-    background: url("/img/header/header-default.png") no-repeat 50% 100%;
-
-    .header-box {
-        color: white;
-        @extend %fcc;
-        align-items: flex-start;
-        height: 100%;
-
-        &__title {
-            font-size: 36px;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 6px;
-        }
-
-        &__text {
-            font-size: 14px;
-            height: 150px;
-        }
-    }
-}
-
 .about-container {
     @extend %fcc;
     padding: 40px 0;

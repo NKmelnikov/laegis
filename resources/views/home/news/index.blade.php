@@ -9,40 +9,30 @@
     {!! JsonLd::generate() !!}
 @endsection
 <main class="news-wrapper">
-    <section class="header-container">
-        <div class="header-box container">
-            <div class="header-box__title">{{ __('news/index.news') }}</div>
-        </div>
-    </section>
+    @include('layouts.header-second', ['message' => __('news/index.news')])
     <section class="news-container">
         @foreach ($news as $item)
             <div class="news-block">
                 <div class="news-block__header">
-                    <div class="news-block__title">
-                        {{
-                            (app()->getLocale() !== 'ru' && !empty($item['title_' . app()->getLocale()]))
-                            ? $item['title_' . app()->getLocale()]
-                            : $item->title
-                        }}
-                    </div>
-                    <div class="news-block__date">{{ $item->created_at }}</div>
+                    <div class="news-image" style="background-image: url({{ $item->imgPath }})"></div>
                 </div>
-                <div class="news-image" style="background: url({{ $item->imgPath }})"></div>
                 <div class="news-block__content">
-                    <p>
-                        {{
-                            (app()->getLocale() !== 'ru' && !empty($item['shortText_' . app()->getLocale()]) )
-                            ? $item['shortText_' . app()->getLocale()]
-                            : $item->shortText
-                         }}
-                    </p>
+                    <div class="news-block__title">
+                        {{translate($item, 'title')}}
+                    </div>
+                    <div class="news-block__short-text">
+                        {{ truncateString(translate($item, 'shortText'), 250) }}
+                    </div>
                 </div>
-                <div class="news-block__actions"><a href="{{ sprintf('/%s/news/%s', app()->getLocale(), $item->slug)  }}">{{ __('news/index.readMore') }}</a></div>
+                <div class="news-block__actions">
+                    <div class="news-block__date">{{ $item->created_at->format('d-m-Y') }}</div>
+                    <a class="aegis-btn" href="{{ sprintf('/%s/news/%s', app()->getLocale(), $item->slug)  }}">{{ __('news/index.readMore') }}</a>
+                </div>
             </div>
         @endforeach
     </section>
     <section class="pagination-container">
-
+        {{ $news->links('pagination::bootstrap-4') }}
     </section>
 </main>
 @endsection

@@ -34,7 +34,7 @@ class NewsController extends Controller
      */
     public function index(): Renderable
     {
-        $news = News::orderBy('position')->get();
+        $news = News::orderBy('position')->paginate(8)->withQueryString();
         SEOMeta::setTitle('About');
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
