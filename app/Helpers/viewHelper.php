@@ -6,6 +6,10 @@ function truncateString($string, $numberOfCharacters)
 }
 
 function translate($item, $key) {
+    if(gettype($item) === 'object') {
+       $item = json_decode(json_encode($item), true);
+    }
+
     return (app()->getLocale() !== 'ru' && !empty($item[$key . '_' . app()->getLocale()]) )
         ? $item[$key . '_' . app()->getLocale()]
         : $item[$key];

@@ -27,30 +27,39 @@ Vue.filter('formatDate', function(value) {
     }
 });
 
-Vue.component('admin-brand', require('./components/brand/index.vue').default);
-Vue.component('admin-brand-edit', require('./components/brand/edit.vue').default);
+Vue.component('admin-brand', require('./components/admin/brand/index.vue').default);
+Vue.component('admin-brand-edit', require('./components/admin/brand/edit.vue').default);
 
-Vue.component('admin-news', require('./components/news/index.vue').default);
-Vue.component('admin-news-edit', require('./components/news/edit.vue').default);
+Vue.component('admin-news', require('./components/admin/news/index.vue').default);
+Vue.component('admin-news-edit', require('./components/admin/news/edit.vue').default);
 
-Vue.component('admin-catalog', require('./components/catalog/index.vue').default);
-Vue.component('admin-catalog-edit', require('./components/catalog/edit.vue').default);
+Vue.component('admin-catalog', require('./components/admin/catalog/index.vue').default);
+Vue.component('admin-catalog-edit', require('./components/admin/catalog/edit.vue').default);
 
-Vue.component('admin-service', require('./components/service/index.vue').default);
-Vue.component('admin-service-edit', require('./components/service/edit.vue').default);
+Vue.component('admin-service', require('./components/admin/service/index.vue').default);
+Vue.component('admin-service-edit', require('./components/admin/service/edit.vue').default);
 
-Vue.component('admin-category', require('./components/category/index.vue').default);
-Vue.component('admin-category-edit', require('./components/category/edit.vue').default);
+Vue.component('admin-category', require('./components/admin/category/index.vue').default);
+Vue.component('admin-category-edit', require('./components/admin/category/edit.vue').default);
 
-Vue.component('admin-subcategory', require('./components/subcategory/index.vue').default);
-Vue.component('admin-subcategory-edit', require('./components/subcategory/edit.vue').default);
+Vue.component('admin-subcategory', require('./components/admin/subcategory/index.vue').default);
+Vue.component('admin-subcategory-edit', require('./components/admin/subcategory/edit.vue').default);
 
-Vue.component('admin-product', require('./components/product/index.vue').default);
-Vue.component('admin-product-edit', require('./components/product/edit.vue').default);
+Vue.component('admin-product', require('./components/admin/product/index.vue').default);
+Vue.component('admin-product-edit', require('./components/admin/product/edit.vue').default);
+
+
+Vue.component('home-catalogs', require('./components/home/catalog/index').default);
 
 if(window.location.pathname.includes('admin')) {
     const app = new Vue({
         el: '#admin-app',
+    });
+}
+
+if(!window.location.pathname.includes('admin')) {
+    const app = new Vue({
+        el: '#app',
     });
 }
 

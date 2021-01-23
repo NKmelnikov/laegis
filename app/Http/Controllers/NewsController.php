@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    /**
-     * @var NewsService
-     */
     private NewsService $newsService;
 
     /**

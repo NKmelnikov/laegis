@@ -1,0 +1,123 @@
+
+.catalog-home-wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 800px;
+}
+
+.brand-container{
+    min-height: 400px;
+    margin-bottom: 100px;
+
+    .brand-box {
+        @extend %fsbc;
+        align-items: flex-start;
+
+        @media #{$tablet} {
+            align-items: center;
+        }
+
+        @media #{$mobile} {
+            align-items: center;
+        }
+
+        &__title {
+            color: #002359;
+            font-size: 40px;
+            font-weight: bolder;
+            text-transform: uppercase;
+            margin: 50px 0 50px 0;
+
+            @media #{$mobile} {
+                text-align: center;
+            }
+
+            @media #{$mobile320} {
+                font-size: 30px;
+            }
+        }
+
+        &__brands {
+            @extend %fc;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+
+            @media #{$tablet} {
+                justify-content: space-evenly;
+            }
+
+            @media #{$mobile} {
+                justify-content: space-evenly;
+            }
+        }
+
+        &__keeper {
+            width: 250px;
+            height: 100px;
+            border: 1px solid lightgrey;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+            margin-right: 36px;
+            box-sizing: border-box;
+
+            @media #{$tablet} {
+                margin-right: 0;
+            }
+
+            @media #{$mobile} {
+                margin-right: 0;
+            }
+
+            a {
+                width: 100%;
+                height: 100%;
+                @extend %fc;
+            }
+
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+
+            &:hover {
+                border: 1px solid transparent;
+                border-left: 10px solid $main-color1;
+            }
+
+            &:hover .brand-box__img {
+                filter: grayscale(0);
+            }
+
+            &.active {
+                border: 1px solid transparent;
+                background: $main-color1;
+
+                .brand-box__img {
+                    filter: grayscale(0);
+                }
+            }
+        }
+
+        &__img {
+            width: 100%;
+            height: 100%;
+            max-width: 200px;
+            max-height: 75px;
+            filter: grayscale(100%);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            @media #{$noDesktop} {
+                filter: grayscale(0);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+

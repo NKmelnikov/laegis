@@ -1,0 +1,109 @@
+.services-metalworking-home-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.recovery-wrapper {
+    margin-top: 20px;
+
+    .title {
+        font-size: 30px;
+        font-weight: bolder;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: $main-color2;
+    }
+
+    .line {
+        border-top: 7px solid $main-color1;
+        width: 80px;
+        margin-bottom: 20px;
+    }
+
+    .first-section, .second-section {
+        @extend %fcc;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 40px;
+
+        .img-container {
+            width: 100%;
+
+            img {
+                width: 100%;
+                margin-bottom: 40px;
+                box-shadow: 0 2px 10px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14),
+            }
+        }
+
+        .text-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            .text {
+                font-size: 16px;
+                line-height: 25px;
+                margin-bottom: 20px;
+                text-align: justify;
+            }
+        }
+    }
+
+    .third-section{
+        margin-bottom: 50px;
+
+        .coating-item{
+            margin-bottom: 20px;
+            @extend %fsb;
+            background: #f7fafd;
+            transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+            position: relative;
+            padding: 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 300;
+            box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+
+            @media #{$mobile} {
+                flex-direction: column;
+            }
+
+            img {
+                width: 300px;
+                padding-right: 16px;
+                flex-shrink: 0;
+            }
+
+            &__text {
+                margin-bottom: 0;
+            }
+
+            &__header {
+                display: flex;
+                flex-direction: row;
+            }
+
+            &__title {
+                font-weight: 700;
+                color: $main-color2;
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+
+            &__spec {
+                display: block;
+                margin-bottom: 16px;
+                font-size: 14px;
+                box-sizing: border-box;
+            }
+
+            &__description {
+                text-align: justify;
+            }
+        }
+    }
+}

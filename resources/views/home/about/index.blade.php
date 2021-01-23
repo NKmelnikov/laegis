@@ -9,7 +9,7 @@
     {!! JsonLd::generate() !!}
 @endsection
         <main class="about-wrapper">
-            @include('layouts.header-second', ['message' => __('about/index.about')])
+            @include('layouts.header-second', ['message' => __('layouts/header.about')])
             <article class="about-container container">
                 <div class="first-section">
                     <div class="img-container">

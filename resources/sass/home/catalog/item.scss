@@ -1,0 +1,97 @@
+.catalog-item-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-description {
+    margin-bottom: 40px;
+    min-height: 500px;
+}
+
+.catalogs-container {
+    @extend %fcc;
+    margin-bottom: 40px;
+    width: 100%;
+
+    .catalog-keeper {
+        @extend %fc;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        width: 100%;
+
+        @media #{$tablet} {
+            justify-content: space-evenly;
+        }
+
+        @media #{$mobile} {
+            justify-content: space-evenly;
+        }
+
+        .catalog-multiplier {
+            border: 1px solid lightgrey;
+            border-radius: 10px;
+            transition: .3s ease-in-out;
+            margin-right: 47px;
+            margin-bottom: 47px;
+
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+
+            &:hover {
+                box-shadow: 0 0 6px 0px gray;
+                border: 1px solid transparent;
+            }
+
+            @media #{$tablet} {
+                margin-right: 0;
+            }
+
+            @media #{$mobile} {
+                margin-right: 0;
+            }
+
+            &__link {
+                text-decoration: none;
+            }
+
+            &__cover {
+                border-radius: 10px;
+                padding: 10px;
+                display: block;
+                height: 240px;
+                width: 227px;
+                overflow: hidden;
+            }
+
+            .bot-title-box {
+                @extend %fc;
+                justify-content: flex-start;
+                padding: 10px 0;
+                width: 240px;
+
+                &__img {
+                    width: 25px;
+                    margin: 0 10px;
+                }
+
+                &__text {
+                    color: $main-color2;
+                    font-weight: bold;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
+.media {
+    @extend %fc;
+}
+
+.media > div {
+    width: 600px;
+    height: 400px;
+}

@@ -11,9 +11,13 @@
 @import 'home/about/index';
 @import 'home/news/index';
 @import 'home/news/item';
-@import 'home/brands_catalogs';
+@import 'home/catalog/index';
+@import 'home/catalog/item';
+@import 'home/service/index';
+@import 'home/service/metalworking';
+@import 'home/service/recovery';
 @import 'home/product';
-@import 'home/service';
+
 //
 //// Bootstrap
 //@import '~bootstrap/scss/bootstrap';

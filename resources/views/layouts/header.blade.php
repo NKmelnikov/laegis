@@ -1,22 +1,22 @@
 <header class="header-desktop">
     <nav class="logo"><a href="#"><img src="{{asset('img/AEGIS_logo_white_en.png')}}" alt=""></a></nav>
     <nav class="item item1 item-main">
-        <a href="{{ sprintf('/%s',app()->getLocale()) }}">Главная</a>
+        <a href="{{ sprintf('/%s',app()->getLocale()) }}">{{ __('layouts/header.main') }}</a>
     </nav>
     <nav class="item item2 item-products">
-        <a href="{{ sprintf('/%s/products',app()->getLocale()) }}">Продукция</a>
+        <a href="{{ sprintf('/%s/products',app()->getLocale()) }}">{{ __('layouts/header.products') }}</a>
     </nav>
     <nav class="item item2 item-products">
-        <a href="{{ sprintf('/%s/services',app()->getLocale()) }}">Услуги</a>
+        <a href="{{ sprintf('/%s/services',app()->getLocale()) }}">{{ __('layouts/header.services') }}</a>
     </nav>
     <nav class="item item3 item-catalogs">
-        <a href="{{ sprintf('/%s/catalogs',app()->getLocale()) }}">Брэнды и Каталоги</a>
+        <a href="{{ sprintf('/%s/catalogs',app()->getLocale()) }}">{{ __('layouts/header.catalogs') }}</a>
     </nav>
     <nav class="item item4 item-news">
-        <a href="{{ sprintf('/%s/news',app()->getLocale()) }}">Новости</a>
+        <a href="{{ sprintf('/%s/news',app()->getLocale()) }}">{{ __('layouts/header.news') }}</a>
     </nav>
     <nav class="item item5 item-about">
-        <a href="{{ sprintf('/%s/about',app()->getLocale()) }}">О нас</a>
+        <a href="{{ sprintf('/%s/about',app()->getLocale()) }}">{{ __('layouts/header.about') }}</a>
     </nav>
     {{app()->getLocale() }}
     <div class="translation">

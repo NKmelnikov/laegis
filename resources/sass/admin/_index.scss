@@ -40,49 +40,6 @@
         }
     }
 
-    .pagination {
-        list-style: none;
-        display: flex;
-        height: 30px;
-        justify-content: flex-end;
-        margin-right: 30px;
-
-        li {
-            border-left: 1px solid lightgray;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 15px;
-
-            &:first-child {
-                border-left: none;
-            }
-
-            &.active {
-                background: #2d3748;
-                border: none;
-
-                a {
-                    color: white;
-                }
-            }
-
-
-            a {
-                transition: .1s ease-in;
-
-                &:hover {
-                    text-decoration: none;
-
-                }
-
-                .sr-only {
-                    display: none;
-                }
-            }
-        }
-    }
-
     .md-button.change-position-btn {
         min-width: 160px;
     }

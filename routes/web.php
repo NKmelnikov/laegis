@@ -35,6 +35,7 @@ Route::group(['prefix' => 'home'], function () {
     Route::get('/get-products-drill', 'Admin\ProductsDrillController@getAll');
     Route::get('/get-metalworking', 'Admin\MetalworkingController@getAll');
     Route::post('/get-news-item-by-slug', 'Admin\NewsController@getBySlug');
+    Route::post('/catalog/getByBrandSlug', [App\Http\Controllers\CatalogController::class, 'getByBrandSlug']);
 });
 
 Route::post('/frola-upload', [App\Http\Controllers\Admin\UploadController::class, 'frolaUpload']);
@@ -87,7 +88,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/bulk-deactivate-catalog', [App\Http\Controllers\Admin\CatalogController::class, 'bulkDeactivate']);
     Route::post('/bulk-delete-catalog', [App\Http\Controllers\Admin\CatalogController::class, 'bulkDelete']);
     Route::post('/update-catalog-position-manually', [App\Http\Controllers\Admin\CatalogController::class, 'updatePositionManually']);
-//        catalog
+//        service
     Route::view('/service', 'admin.service.index');
     Route::view('/service/create', 'admin.service.edit');
     Route::get('/service/getAllPaginated', [App\Http\Controllers\Admin\MetalworkingController::class, 'getAllPaginated']);
@@ -164,14 +165,16 @@ Route::group([
     'where' => ['locale' => '[a-zA-Z]{2}'],
     'middleware' => 'setlocale'
 ], function() {
-
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
     Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [App\Http\Controllers\NewsController::class, 'item'])->name('news-item');
     Route::get('/catalogs', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalogs');
+    Route::get('/catalogs/{slug}', [App\Http\Controllers\CatalogController::class, 'item'])->name('catalog-item');
     Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services');
+    Route::get('/services/metalworking', [App\Http\Controllers\ServiceController::class, 'metalworking'])->name('services-metalworking');
+    Route::get('/services/recovery', [App\Http\Controllers\ServiceController::class, 'recovery'])->name('services-recovery');
 });
 
 
