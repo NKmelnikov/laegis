@@ -33,7 +33,7 @@
     </section>
 
 {{-- resources/js/components/home/catalog/index.vue --}}
-    <home-catalogs></home-catalogs>
+    <home-catalogs :locale="{{ json_encode(app()->getLocale(), true)}}"></home-catalogs>
 </main>
 
 @endsection
