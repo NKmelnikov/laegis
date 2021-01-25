@@ -51,6 +51,8 @@ Vue.component('admin-product-edit', require('./components/admin/product/edit.vue
 
 Vue.component('home-catalogs', require('./components/home/catalog/index').default);
 
+Vue.component('home-products', require('./components/home/product/index').default);
+
 if(window.location.pathname.includes('admin')) {
     const app = new Vue({
         el: '#admin-app',

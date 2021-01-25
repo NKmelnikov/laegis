@@ -120,9 +120,9 @@ class ProductService extends BaseService
         }
     }
 
-    public function getByCategorySlug(Request $request)
+    public function getByCategorySlug(Request $request, $fromView = false)
     {
-        $slug = $request['slug'];
+        $slug = ($fromView)? $request['categorySlug'] : $request['slug'];
 
         $products = DB::table('products as  p')
             ->leftJoin('brands as b', 'p.brand_id', '=', 'b.id')
@@ -147,48 +147,19 @@ class ProductService extends BaseService
                 'p.pdf1Path',
                 'p.pdf2Path',
                 'p.created_at')
-            ->where('c.slug', $slug)
-            ->get();
+            ->where('c.slug', $slug);
 
-        try {
-            return response()->json($products);
-        } catch (Exception $e) {
-            return response()->json(["message" => $e->getMessage()], 400);
+        if($slug === 'brands') {
+            $products = $this->getByBrandSlug($request,true);
         }
-    }
 
-    public function getBySubcategorySlug(Request $request)
-    {
-        $slug = $request['slug'];
 
-        $products = DB::table('products as  p')
-            ->leftJoin('brands as b', 'p.brand_id', '=', 'b.id')
-            ->leftJoin('categories as c', 'p.category_id', '=', 'c.id')
-            ->leftJoin('subcategories as s', 'p.subcategory_id', '=', 's.id')
-            ->select('p.id as id',
-                'p.brand_id',
-                'p.category_id',
-                'p.subcategory_id',
-                'b.name as brand_name',
-                'c.name as category_name',
-                'c.slug as category_slug',
-                DB::Raw('IFNULL( `s`.`name` , "no-subcategory" ) as subcategory_name'),
-                DB::Raw('IFNULL( `s`.`slug` , "no-subcategory" ) as subcategory_slug'),
-                'p.active',
-                'p.position',
-                'p.name',
-                'p.slug',
-                'p.description',
-                'p.spec',
-                'p.imgPath',
-                'p.pdf1Path',
-                'p.pdf2Path',
-                'p.created_at')
-            ->where('s.slug', $slug)
-            ->get();
+        if($fromView) {
+            return $products->paginate(25);
+        }
 
         try {
-            return response()->json($products);
+            return response()->json($products->get());
         } catch (Exception $e) {
             return response()->json(["message" => $e->getMessage()], 400);
         }
@@ -231,7 +202,8 @@ class ProductService extends BaseService
         }
     }
 
-    public function getByBrandSlug(Request $request)
+
+    public function getByBrandSlug(Request $request, $fromView = false)
     {
         $slug = $request['slug'];
 
@@ -259,11 +231,14 @@ class ProductService extends BaseService
                 'p.pdf1Path',
                 'p.pdf2Path',
                 'p.created_at')
-            ->where('b.slug', $slug)
-            ->get();
-        Log::info(response()->json($products));
+            ->where('b.slug', $slug);
+
+        if($fromView) {
+            return $products;
+        }
+
         try {
-            return response()->json($products);
+            return response()->json($products->get());
         } catch (Exception $e) {
             return response()->json(["message" => $e->getMessage()], 400);
         }

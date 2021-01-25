@@ -26,12 +26,12 @@ Route::group(['prefix' => 'home'], function () {
     Route::post('/get-category-by-id', 'Admin\CategoryController@getById');
     Route::get('/get-subcategories', 'Admin\SubcategoryController@getAll');
     Route::post('/get-by-category-id', 'Admin\SubcategoryController@getByCategoryId');
-    Route::get('/get-products-oil', 'Admin\ProductsOilController@getAll');
-    Route::get('/get-products-oil-by-brand', 'Admin\ProductsOilController@getAllBrand');
-    Route::post('/get-product-oil-by-slug', 'Admin\ProductsOilController@getBySlug');
-    Route::post('/get-product-oil-by-category-slug', 'Admin\ProductsOilController@getByCategorySlug');
-    Route::post('/get-product-oil-by-subcategory-slug', 'Admin\ProductsOilController@getBySubcategorySlug');
-    Route::post('/get-product-oil-by-brand-slug', 'Admin\ProductsOilController@getByBrandSlug');
+    Route::get('/get-products', [App\Http\Controllers\Admin\ProductController::class, 'getAll']);
+    Route::get('/get-products-by-brand', 'Admin\ProductsOilController@getAllBrand');
+    Route::post('/get-product-by-slug', 'Admin\ProductsOilController@getBySlug');
+    Route::post('/get-product-by-category-slug', 'Admin\ProductsOilController@getByCategorySlug');
+    Route::post('/get-product-by-subcategory-slug', 'Admin\ProductsOilController@getBySubcategorySlug');
+    Route::post('/get-product-by-brand-slug', 'Admin\ProductsOilController@getByBrandSlug');
     Route::get('/get-products-drill', 'Admin\ProductsDrillController@getAll');
     Route::get('/get-metalworking', 'Admin\MetalworkingController@getAll');
     Route::post('/get-news-item-by-slug', 'Admin\NewsController@getBySlug');
@@ -166,7 +166,6 @@ Route::group([
     'middleware' => 'setlocale'
 ], function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
     Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
     Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [App\Http\Controllers\NewsController::class, 'item'])->name('news-item');
@@ -175,6 +174,10 @@ Route::group([
     Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services');
     Route::get('/services/metalworking', [App\Http\Controllers\ServiceController::class, 'metalworking'])->name('services-metalworking');
     Route::get('/services/recovery', [App\Http\Controllers\ServiceController::class, 'recovery'])->name('services-recovery');
+    Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+    Route::get('/products/{categorySlug}', [App\Http\Controllers\ProductController::class, 'category'])->name('products-by-category');
+    Route::get('/products/{categorySlug}/{subcategorySlug}', [App\Http\Controllers\ProductController::class, 'subcategory'])->name('products-by-subcategory');
+    Route::get('/products/{categorySlug}/{subcategorySlug}/{productsSlug}', [App\Http\Controllers\ProductController::class, 'item'])->name('product');
 });
 
 
