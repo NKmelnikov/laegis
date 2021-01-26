@@ -49,9 +49,9 @@ Vue.component('admin-product', require('./components/admin/product/index.vue').d
 Vue.component('admin-product-edit', require('./components/admin/product/edit.vue').default);
 
 
-Vue.component('home-catalogs', require('./components/home/catalog/index').default);
+Vue.component('home-catalog', require('./components/home/catalog/index.vue').default);
 
-Vue.component('home-products', require('./components/home/product/index').default);
+Vue.component('home-product-list', require('./components/home/product/index.vue').default);
 
 if(window.location.pathname.includes('admin')) {
     const app = new Vue({

@@ -31,7 +31,7 @@ class BaseService
         }
     }
 
-    public function getAllPaginated(): JsonResponse
+    public function getAllPaginated()
     {
         try {
             return response()->json($this->model::orderBy('position')->paginate(15));

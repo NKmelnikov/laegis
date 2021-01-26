@@ -51,43 +51,12 @@
     </div>
 
     <div class="home-product-wrapper container">
+        <div class="product-home-cloak"></div>
         <div class="content-container container">
-            <aside class="navigation-container">
-                <div class="category-title">
-                    Категории
-                </div>
-                <div id="accordion">
-                    @foreach($categories as $category)
-                        <div class="card">
-                            <div class="card__header {{ $category['slug'] }}" id="{{ 'heading'. $category['slug'] }}">
-                                <a href="{{ sprintf('/%s/products/%s', app()->getLocale(), $category['slug'] ) }}">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="{{ '#'. $category['slug'] }}" aria-expanded="false" aria-controls="{{ $category['slug'] }}">
-                                       <span class="text">{{ $category['name'] }}</span>
-                                    </button>
-                                </a>
-                            </div>
-                            <div id="{{ $category['slug'] }}" class="collapse" aria-labelledby="{{ $category['slug'] }}" data-parent="#accordion">
-
-                                @foreach($category['subcategories'] as $subcategory)
-                                    <div class="card__body">
-                                        <a href="{{ sprintf('/%s/products/%s/%s', app()->getLocale(), $category['slug'], $subcategory['slug'] ) }}">{{ $subcategory['name'] }}</a>
-                                    </div>
-                                @endforeach
-                                @if($category['subcategories']->isEmpty())
-                                        <div class="card__body">
-                                            подкатегорий нет
-                                        </div>
-                                @endif
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </aside>
+            @include('home.product.category-accordion', ['categories' => $categories])
             <section class="product-wrapper">
-                <div id="current-view-name" class="selected-name"> selectedNameToShow </div>
-                <div>
-                    <home-products :products="{{ $products ?? false }}"></home-products>
-                </div>
+                <div id="current-view-name" class="selected-name"> Все продукты </div>
+                <home-product-list :type="{{ json_encode($type, true) }}" :locale="{{ json_encode(app()->getLocale(), true) }}"></home-product-list>
             </section>
         </div>
     </div>

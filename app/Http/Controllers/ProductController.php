@@ -11,8 +11,9 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -36,10 +37,6 @@ class ProductController extends Controller
      */
     public function index(): Renderable
     {
-        $products = Product::with(['category', 'subcategory', 'brand'])
-            ->orderBy('position')
-            ->paginate(10);
-
         SEOMeta::setTitle('Products');
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
@@ -56,28 +53,144 @@ class ProductController extends Controller
         return view(
             'home.product.index',
             [
-                'products' => $products->toJson(),
                 'categories' => $this->getCategories(),
+                'type' => 'all',
             ]
         );
     }
 
-    public function category(Request $request): Renderable
+    public function category(): Renderable
     {
-
-
-        $products = $this->productService->getByCategorySlug($request, true);
+        SEOMeta::setTitle('Products');
+        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'articles');
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@LuizVinicius73');
+        JsonLd::setTitle('Homepage');
+        JsonLd::setDescription('This is my page description');
+        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
 
         return view(
             'home.product.index',
             [
-                'products' => $products->toJson(),
                 'categories' => $this->getCategories(),
+                'type' => 'category',
+            ]);
+    }
+
+    public function subcategory(): Renderable
+    {
+        SEOMeta::setTitle('Products');
+        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'articles');
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@LuizVinicius73');
+        JsonLd::setTitle('Homepage');
+        JsonLd::setDescription('This is my page description');
+        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
+
+        return view(
+            'home.product.index',
+            [
+                'categories' => $this->getCategories(),
+                'type' => 'subcategory',
             ]
         );
     }
 
-    public function getCategories() {
+    public function brandAll(): Renderable
+    {
+        SEOMeta::setTitle('Products');
+        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'articles');
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@LuizVinicius73');
+        JsonLd::setTitle('Homepage');
+        JsonLd::setDescription('This is my page description');
+        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
+
+        return view(
+            'home.product.index',
+            [
+                'categories' => $this->getCategories(),
+                'type' => 'brandAll',
+            ]
+        );
+    }
+
+    public function brand(): Renderable
+    {
+        SEOMeta::setTitle('Products');
+        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'articles');
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@LuizVinicius73');
+        JsonLd::setTitle('Homepage');
+        JsonLd::setDescription('This is my page description');
+        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
+
+        return view(
+            'home.product.index',
+            [
+                'categories' => $this->getCategories(),
+                'type' => 'brand',
+            ]
+        );
+    }
+
+    public function item(Request $request): Renderable
+    {
+        $products = $this->productService->getBySubcategorySlug($request, true);
+
+        return view(
+            'home.product.item',
+            ['categories' => $this->getCategories()]
+        );
+    }
+
+    public function getAll()
+    {
+        return $this->productService->getAllPaginated(true);
+    }
+
+    public function getByCategory(Request $request) {
+        return $this->productService->getByCategorySlug($request, true);
+    }
+
+    public function getBySubcategory(Request $request) {
+        return $this->productService->getBySubcategorySlug($request, true);
+    }
+
+    public function getAllBrand(Request $request) {
+        return $this->productService->getAllBrand($request, true);
+    }
+
+    public function getByBrand(Request $request) {
+        return $this->productService->getByBrandSlug($request, true);
+    }
+
+    public function getItem() {
+        return $this->productService->getAllPaginated(true);
+    }
+
+    private function getCategories()
+    {
         $categories = Category::with('subcategories')
             ->orderBy('position')
             ->get();

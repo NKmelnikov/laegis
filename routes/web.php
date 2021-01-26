@@ -19,23 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'home'], function () {
     Route::get('/get-brands', [App\Http\Controllers\Admin\BrandController::class, 'getAll']);
-    Route::post('/get-brand-by-slug', 'Admin\BrandController@getBySlug');
-    Route::get('/get-catalogs', 'Admin\CatalogController@getAll');
-    Route::get('/get-posts', 'Admin\NewsController@getAll');
-    Route::get('/get-categories', 'Admin\CategoryController@getAll');
-    Route::post('/get-category-by-id', 'Admin\CategoryController@getById');
-    Route::get('/get-subcategories', 'Admin\SubcategoryController@getAll');
-    Route::post('/get-by-category-id', 'Admin\SubcategoryController@getByCategoryId');
-    Route::get('/get-products', [App\Http\Controllers\Admin\ProductController::class, 'getAll']);
-    Route::get('/get-products-by-brand', 'Admin\ProductsOilController@getAllBrand');
-    Route::post('/get-product-by-slug', 'Admin\ProductsOilController@getBySlug');
-    Route::post('/get-product-by-category-slug', 'Admin\ProductsOilController@getByCategorySlug');
-    Route::post('/get-product-by-subcategory-slug', 'Admin\ProductsOilController@getBySubcategorySlug');
-    Route::post('/get-product-by-brand-slug', 'Admin\ProductsOilController@getByBrandSlug');
-    Route::get('/get-products-drill', 'Admin\ProductsDrillController@getAll');
-    Route::get('/get-metalworking', 'Admin\MetalworkingController@getAll');
-    Route::post('/get-news-item-by-slug', 'Admin\NewsController@getBySlug');
     Route::post('/catalog/getByBrandSlug', [App\Http\Controllers\CatalogController::class, 'getByBrandSlug']);
+    Route::get('/product/get-all', [App\Http\Controllers\ProductController::class, 'getAll']);
+    Route::post('/product/get-by-category', [App\Http\Controllers\ProductController::class, 'getByCategory']);
+    Route::post('/product/get-by-subcategory', [App\Http\Controllers\ProductController::class, 'getBySubcategory']);
+    Route::get('/product/get-all-brand', [App\Http\Controllers\ProductController::class, 'getAllBrand']);
+    Route::post('/product/get-by-brand', [App\Http\Controllers\ProductController::class, 'getByBrand']);
+    Route::post('/product/get-item', [App\Http\Controllers\ProductController::class, 'getItem']);
 });
 
 Route::post('/frola-upload', [App\Http\Controllers\Admin\UploadController::class, 'frolaUpload']);
@@ -175,6 +165,8 @@ Route::group([
     Route::get('/services/metalworking', [App\Http\Controllers\ServiceController::class, 'metalworking'])->name('services-metalworking');
     Route::get('/services/recovery', [App\Http\Controllers\ServiceController::class, 'recovery'])->name('services-recovery');
     Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+    Route::get('/products/brands', [App\Http\Controllers\ProductController::class, 'brandAll'])->name('product-by-brand');
+    Route::get('/products/brands/{brandSlug}', [App\Http\Controllers\ProductController::class, 'brand'])->name('product-by-brand-item');
     Route::get('/products/{categorySlug}', [App\Http\Controllers\ProductController::class, 'category'])->name('products-by-category');
     Route::get('/products/{categorySlug}/{subcategorySlug}', [App\Http\Controllers\ProductController::class, 'subcategory'])->name('products-by-subcategory');
     Route::get('/products/{categorySlug}/{subcategorySlug}/{productsSlug}', [App\Http\Controllers\ProductController::class, 'item'])->name('product');
