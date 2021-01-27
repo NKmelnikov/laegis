@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\Admin\BrandService;
+use App\Services\Admin\CatalogService;
+use App\Services\Admin\CategoryService;
 use App\Services\Admin\ProductService;
+use App\Services\Admin\SubcategoryService;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -20,6 +24,12 @@ class ProductController extends Controller
 
     private ProductService $productService;
 
+    private CategoryService $categoryService;
+
+    private SubcategoryService $subcategoryService;
+
+    private BrandService $brandService;
+
     /**
      * Create a new controller instance.
      *
@@ -28,6 +38,9 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->productService = new ProductService(Product::class);
+        $this->categoryService = new CategoryService(Category::class);
+        $this->subcategoryService = new SubcategoryService(Category::class);
+        $this->brandService = new BrandService(Brand::class);
     }
 
     /**
@@ -154,9 +167,20 @@ class ProductController extends Controller
         );
     }
 
-    public function item(Request $request): Renderable
+    public function item(): Renderable
     {
-        $products = $this->productService->getBySubcategorySlug($request, true);
+        SEOMeta::setTitle('Products');
+        SEOMeta::setDescription('This is my page description');
+        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'articles');
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@LuizVinicius73');
+        JsonLd::setTitle('Homepage');
+        JsonLd::setDescription('This is my page description');
+        JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
 
         return view(
             'home.product.item',
@@ -178,15 +202,27 @@ class ProductController extends Controller
     }
 
     public function getAllBrand(Request $request) {
-        return $this->productService->getAllBrand($request, true);
+        return $this->productService->getAllBrand($request);
     }
 
     public function getByBrand(Request $request) {
         return $this->productService->getByBrandSlug($request, true);
     }
 
-    public function getItem() {
-        return $this->productService->getAllPaginated(true);
+    public function getItem(Request $request) {
+        return $this->productService->getBySlug($request);
+    }
+
+    public function getCategory(Request $request) {
+        return $this->categoryService->getBySlug($request);
+    }
+
+    public function getSubcategory(Request $request) {
+        return $this->subcategoryService->getBySlug($request);
+    }
+
+    public function getBrand(Request $request) {
+        return $this->brandService->getBySlug($request);
     }
 
     private function getCategories()

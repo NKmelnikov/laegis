@@ -27,6 +27,14 @@ Vue.filter('formatDate', function(value) {
     }
 });
 
+Vue.filter('truncate', function (value, limit) {
+    if (value.length > limit) {
+        value = value.substring(0, (limit - 3)) + '...';
+    }
+
+    return value
+})
+
 Vue.component('admin-brand', require('./components/admin/brand/index.vue').default);
 Vue.component('admin-brand-edit', require('./components/admin/brand/edit.vue').default);
 
@@ -52,6 +60,8 @@ Vue.component('admin-product-edit', require('./components/admin/product/edit.vue
 Vue.component('home-catalog', require('./components/home/catalog/index.vue').default);
 
 Vue.component('home-product-list', require('./components/home/product/index.vue').default);
+Vue.component('home-product-item', require('./components/home/product/item.vue').default);
+Vue.component('home-breadcrumbs', require('./components/home/product/breadcrumbs').default);
 
 if(window.location.pathname.includes('admin')) {
     const app = new Vue({

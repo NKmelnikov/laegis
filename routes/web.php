@@ -26,6 +26,9 @@ Route::group(['prefix' => 'home'], function () {
     Route::get('/product/get-all-brand', [App\Http\Controllers\ProductController::class, 'getAllBrand']);
     Route::post('/product/get-by-brand', [App\Http\Controllers\ProductController::class, 'getByBrand']);
     Route::post('/product/get-item', [App\Http\Controllers\ProductController::class, 'getItem']);
+    Route::post('/product/get-category', [App\Http\Controllers\ProductController::class, 'getCategory']);
+    Route::post('/product/get-subcategory', [App\Http\Controllers\ProductController::class, 'getSubcategory']);
+    Route::post('/product/get-brand', [App\Http\Controllers\ProductController::class, 'getBrand']);
 });
 
 Route::post('/frola-upload', [App\Http\Controllers\Admin\UploadController::class, 'frolaUpload']);
@@ -169,7 +172,7 @@ Route::group([
     Route::get('/products/brands/{brandSlug}', [App\Http\Controllers\ProductController::class, 'brand'])->name('product-by-brand-item');
     Route::get('/products/{categorySlug}', [App\Http\Controllers\ProductController::class, 'category'])->name('products-by-category');
     Route::get('/products/{categorySlug}/{subcategorySlug}', [App\Http\Controllers\ProductController::class, 'subcategory'])->name('products-by-subcategory');
-    Route::get('/products/{categorySlug}/{subcategorySlug}/{productsSlug}', [App\Http\Controllers\ProductController::class, 'item'])->name('product');
+    Route::get('/products/{categorySlug}/{subcategorySlug}/{productSlug}', [App\Http\Controllers\ProductController::class, 'item'])->name('product123');
 });
 
 

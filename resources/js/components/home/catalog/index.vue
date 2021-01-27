@@ -7,7 +7,7 @@
                         <img  class="catalog-multiplier__cover" :src="entity.imgPath" alt="PDF">
                         <div class="bot-title-box">
                             <img class="bot-title-box__img" src="/img/pdf-orange.png" alt="">
-                            <span class="bot-title-box__text">{{ getTranslations(entity) }}</span>
+                            <span class="bot-title-box__text">{{ getTranslations(entity, 'name') }}</span>
                         </div>
                     </a>
                 </div>
@@ -21,7 +21,10 @@
 </template>
 
 <script>
+import {homeMixin} from "../../../mixins/homeMixin";
+
 export default {
+    mixins: [homeMixin],
     props: [
         'locale'
     ],
@@ -40,17 +43,10 @@ export default {
             )
                 .then((res) => {
                     this.entities = res.data;
-                    console.log(this.getTranslations());
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-        },
-        getSlug() {
-            return window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
-        },
-        getTranslations(entity) {
-            return (this.locale !== 'ru' && entity[`name_${this.locale}`] !== null) ? entity[`name_${this.locale}`] : entity.name ;
         }
     }
 }

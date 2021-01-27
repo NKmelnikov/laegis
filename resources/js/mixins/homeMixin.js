@@ -3,8 +3,8 @@ export const homeMixin = {
             getSlug() {
                 return window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
             },
-            getTranslations(entity) {
-                return (this.locale !== 'ru' && entity[`name_${this.locale}`] !== null) ? entity[`name_${this.locale}`] : entity.name ;
+            getTranslations(entity, key) {
+                return (this.locale !== 'ru' && entity[`${key}_${this.locale}`] !== null) ? entity[`${key}_${this.locale}`] : entity[key] ;
             }
         }
 }

@@ -47,6 +47,32 @@ class SubcategoryService extends BaseService
         }
     }
 
+    public function getBySlug(Request $request)
+    {
+        try {
+            $subcategories = DB::table('subcategories as  s')
+                ->leftJoin('categories as c', 's.category_id', '=', 'c.id')
+                ->select('s.id as id',
+                    's.category_id',
+                    'c.name as category_name',
+                    'c.name_en as category_name_en',
+                    'c.slug as category_slug',
+                    's.active',
+                    's.position',
+                    's.name',
+                    's.name_en',
+                    's.slug',
+                    's.description',
+                    's.description_en',
+                    's.created_at')
+                ->where('s.slug', $request['slug'])
+                ->first();
+            return response()->json($subcategories);
+        } catch (Exception $e) {
+            return response()->json(["message" => $e->getMessage()], 400);
+        }
+    }
+
     public function getByCategoryId(Request $request)
     {
         $result = DB::table('subcategories as s')

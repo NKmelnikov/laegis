@@ -23,10 +23,16 @@
 
         $(document).ready(function() {
             product.handleCollapse();
+
         });
 
         $(window).on('load', function() {
             product.cloak.fadeOut('fast');
+
+            // setTimeout(() => {
+            //     console.log(window.breadcrumb);
+            // }, 400)
+
         });
 
     </script>

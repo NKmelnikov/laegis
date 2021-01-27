@@ -12,51 +12,14 @@
 
 <main class="products-home-wrapper">
     @include('layouts/header-second', ['message' => 'Продукция'])
-    <div class="breadcrumbs container" id="breadcrumbs-products">
-        <a
-            class="breadcrumbs__item"
-            href="/"
-        >Главная</a>
-        <span class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/ru/products"
-        >Продукция</a>
-        <span
-            class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/products/category"
-        > Категория </a>
-        <span
-            class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/products/category/sub"
-        >Подкатегория</a>
-        <span
-            class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/products/category/sub.product"
-        >Продукт</a>
-    </div>
+    <home-breadcrumbs :locale="{{ json_encode(app()->getLocale(), true) }}"></home-breadcrumbs>
 
     <div class="home-product-wrapper container">
         <div class="product-home-cloak"></div>
         <div class="content-container container">
             @include('home.product.category-accordion', ['categories' => $categories])
             <section class="product-wrapper">
-                <div id="current-view-name" class="selected-name"> Все продукты </div>
-                <home-product-list :type="{{ json_encode($type, true) }}" :locale="{{ json_encode(app()->getLocale(), true) }}"></home-product-list>
+                <home-product-list :categories="{{ json_encode($categories, true) }}" :type="{{ json_encode($type, true) }}" :locale="{{ json_encode(app()->getLocale(), true) }}"></home-product-list>
             </section>
         </div>
     </div>

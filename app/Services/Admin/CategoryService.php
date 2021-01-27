@@ -29,4 +29,13 @@ class CategoryService extends BaseService
             return response()->json(["message" => $e->getMessage()], 400);
         }
     }
+
+    public function getBySlug(Request $request)
+    {
+        try {
+            return response()->json(Category::with('subcategories')->where('slug', $request['slug'])->first());
+        } catch (Exception $e) {
+            return response()->json(["message" => $e->getMessage()], 400);
+        }
+    }
 }
