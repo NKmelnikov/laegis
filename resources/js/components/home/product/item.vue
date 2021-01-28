@@ -1,5 +1,7 @@
 <template>
         <section class="product-item-keeper">
+            <home-breadcrumbs :locale="locale" :breadcrumbs="breadcrumbs"></home-breadcrumbs>
+
             <div id="current-view-name" class="selected-name">{{getTranslations(entity, 'name')}}</div>
             <div class="product-item">
                 <div class="product-item__img">
@@ -45,7 +47,21 @@ export default {
     },
     data: () => ({
         entity: [],
-        entityName: ''
+        entityName: '',
+        breadcrumbs: {
+            category: {
+                name: null,
+                slug: null
+            },
+            subcategory: {
+                name: null,
+                slug: null
+            },
+            product: {
+                name: null,
+                slug: null
+            },
+        }
     }),
     methods: {
         getEntity() {
@@ -55,6 +71,15 @@ export default {
                 )
                 .then((res) => {
                     this.entity = res.data;
+
+                    this.breadcrumbs.category.name = this.getTranslations(this.entity, 'category_name');
+                    this.breadcrumbs.category.slug = this.entity.category_slug;
+                    this.breadcrumbs.subcategory.name = this.getTranslations(this.entity, 'subcategory_name');
+                    this.breadcrumbs.subcategory.slug = (this.getTranslations(this.entity, 'subcategory_name') === 'no-subcategory') ? '' : `/${this.entity.subcategory_slug}`;
+                    this.breadcrumbs.product.name = this.getTranslations(this.entity, 'name');
+                    this.breadcrumbs.product.slug = this.entity.slug;
+
+
                 })
                 .catch((error) => {
                     console.log(error);

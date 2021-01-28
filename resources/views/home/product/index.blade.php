@@ -12,7 +12,7 @@
 
 <main class="products-home-wrapper">
     @include('layouts/header-second', ['message' => 'Продукция'])
-    <home-breadcrumbs :locale="{{ json_encode(app()->getLocale(), true) }}"></home-breadcrumbs>
+{{--    <home-breadcrumbs :locale="{{ json_encode(app()->getLocale(), true) }}"></home-breadcrumbs>--}}
 
     <div class="home-product-wrapper container">
         <div class="product-home-cloak"></div>

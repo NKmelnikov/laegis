@@ -4,28 +4,28 @@
         <span class="breadcrumbs__divider"> &nbsp;/&nbsp;</span>
         <a
             class="breadcrumbs__item"
-            v-bind:class="{ 'current': this.getSlug() === 'products'}"
+            v-bind:class="{ 'current': getSlug() === 'products'}"
             :href="`/${locale}/products`">Продукция
         </a>
-        <span class="category breadcrumbs__divider" v-if="categoryName != null"> &nbsp;/&nbsp; </span>
+        <span class="category breadcrumbs__divider" v-if="breadcrumbs.category.name != null"> &nbsp;/&nbsp; </span>
         <a
             class="category breadcrumbs__item"
-            v-bind:class="{ 'current': categoryName != null && subcategoryName == null && productName == null}"
-            :href="categoryLink"
-            v-if="categoryName != null">{{ categoryName }}
+            v-bind:class="{ 'current': breadcrumbs.category.name != null && breadcrumbs.subcategory.name == null && breadcrumbs.product.name == null}"
+            :href="`/${locale}/products/${breadcrumbs.category.slug}`"
+            v-if="breadcrumbs.category.name != null">{{ breadcrumbs.category.name }}
         </a>
-        <span class="breadcrumbs__divider" v-if="subcategoryName != null">&nbsp;/&nbsp;</span>
+        <span class="breadcrumbs__divider" v-if="breadcrumbs.subcategory.name != null && breadcrumbs.subcategory.name !== 'no-subcategory' ">&nbsp;/&nbsp;</span>
         <a
             class="breadcrumbs__item"
-            v-bind:class="{ 'current': categoryName != null && subcategoryName != null && productName == null }"
-            :href="subcategoryLink"
-            v-if="subcategoryName != null">{{ subcategoryName }}
+            v-bind:class="{ 'current': breadcrumbs.subcategory.name != null && breadcrumbs.subcategory.name != null && breadcrumbs.product.name == null }"
+            :href="`/${locale}/products/${breadcrumbs.category.slug}${breadcrumbs.subcategory.slug}`"
+            v-if="breadcrumbs.subcategory.name != null && breadcrumbs.subcategory.name !== 'no-subcategory' ">{{ breadcrumbs.subcategory.name }}
         </a>
-        <span class="breadcrumbs__divider" v-if="productName != null">&nbsp;/&nbsp;</span>
+        <span class="breadcrumbs__divider" v-if="breadcrumbs.product.name != null">&nbsp;/&nbsp;</span>
         <a class="breadcrumbs__item"
-           :href="productLink"
-           v-bind:class="{ 'current': categoryName != null && subcategoryName != null && productName != null }"
-           v-if="productName != null">{{ productName }}
+           :href="`/${locale}/products/${breadcrumbs.category.slug}${breadcrumbs.subcategory.slug}/${breadcrumbs.product.slug}`"
+           v-bind:class="{ 'current': breadcrumbs.subcategory.name != null && breadcrumbs.subcategory.name != null && breadcrumbs.product.name != null }"
+           v-if="breadcrumbs.product.name != null">{{ breadcrumbs.product.name }}
         </a>
     </div>
 </template>
@@ -35,34 +35,6 @@ import {homeMixin} from "../../../mixins/homeMixin";
 
 export default {
     mixins:[homeMixin],
-    props: ['locale'],
-    mounted() {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                this.getData();
-            }, 100)
-            console.log('aasd');
-            console.log(this.categoryName);
-        })
-
-    },
-    data: () => ({
-        categoryName: null,
-        categoryLink: null,
-        subcategoryName: null,
-        subcategoryLink: null,
-        productName: null,
-        productLink: null,
-    }),
-    methods: {
-        getData() {
-                this.categoryName = window.breadcrumb.category.name;
-                this.categoryLink = `${this.locale}/products/${window.breadcrumb.category.slug}`;
-                this.subcategoryName = window.breadcrumb.subcategory.name;
-                this.subcategoryLink = `${this.locale}/products/${window.breadcrumb.category.slug}/${window.breadcrumb.subcategory.slug}`;
-                this.productName = window.breadcrumb.product.name;
-                this.productLink = `${this.locale}/products/${window.breadcrumb.category.slug}/${window.breadcrumb.subcategory.slug}/${window.breadcrumb.product.slug}`;
-        }
-    }
+    props: ['locale', 'breadcrumbs']
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <section class="product-keeper">
-
+        <home-breadcrumbs :locale="locale" :breadcrumbs="breadcrumbs"></home-breadcrumbs>
         <div id="current-view-name" class="selected-name">{{ pageTitle }}</div>
         <div class="product-container">
             <div v-if="entities.data.length === 0">В этой категории продукты не представлены</div>
@@ -31,7 +31,15 @@ export default {
     props: ['locale', 'type', 'categories'],
     mounted() {
         this.getEntities();
-        window.breadcrumb = {
+    },
+    data: () => ({
+        entities: {data:[]},
+        entityName: '',
+        pageTitle: 'Все продукты',
+        activeCategory: '',
+        activeSubcategory: '',
+        activeBrand: '',
+        breadcrumbs: {
             category: {
                 name: null,
                 slug: null
@@ -44,15 +52,7 @@ export default {
                 name: null,
                 slug: null
             },
-        };
-    },
-    data: () => ({
-        entities: [],
-        entityName: '',
-        pageTitle: 'Все продукты',
-        activeCategory: '',
-        activeSubcategory: '',
-        activeBrand: '',
+        }
     }),
     methods: {
         getEntities(page = 1) {
@@ -120,8 +120,8 @@ export default {
                     const categorySlug = 'brands';
 
                     this.pageTitle = categoryName;
-                    window.breadcrumb.category.name = categoryName;
-                    window.breadcrumb.category.slug = categorySlug;
+                    this.breadcrumbs.category.name = categoryName;
+                    this.breadcrumbs.category.slug = categorySlug;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -152,8 +152,8 @@ export default {
                     const categorySlug = this.activeCategory.slug;
 
                     this.pageTitle = categoryName;
-                    window.breadcrumb.category.name = categoryName;
-                    window.breadcrumb.category.slug = categorySlug;
+                    this.breadcrumbs.category.name = categoryName;
+                    this.breadcrumbs.category.slug = categorySlug;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -173,10 +173,10 @@ export default {
                     const subcategorySlug = this.activeSubcategory.slug;
 
                     this.pageTitle = subcategoryName;
-                    window.breadcrumb.category.name = categoryName;
-                    window.breadcrumb.category.slug = categorySlug;
-                    window.breadcrumb.subcategory.name = subcategoryName;
-                    window.breadcrumb.subcategory.slug = subcategorySlug;
+                    this.breadcrumbs.category.name = categoryName;
+                    this.breadcrumbs.category.slug = categorySlug;
+                    this.breadcrumbs.subcategory.name = subcategoryName;
+                    this.breadcrumbs.subcategory.slug = subcategorySlug;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -197,10 +197,10 @@ export default {
                     const subcategorySlug = this.activeBrand.slug;
 
                     this.pageTitle = subcategoryName;
-                    window.breadcrumb.category.name = categoryName;
-                    window.breadcrumb.category.slug = categorySlug;
-                    window.breadcrumb.subcategory.name = subcategoryName;
-                    window.breadcrumb.subcategory.slug = subcategorySlug;
+                    this.breadcrumbs.category.name = categoryName;
+                    this.breadcrumbs.category.slug = categorySlug;
+                    this.breadcrumbs.subcategory.name = subcategoryName;
+                    this.breadcrumbs.subcategory.slug = subcategorySlug;
                 })
                 .catch((error) => {
                     console.log(error);

@@ -12,43 +12,6 @@
 
 <main class="products-home-wrapper">
     @include('layouts/header-second', ['message' => 'Продукция'])
-    <div class="breadcrumbs container" id="breadcrumbs-products">
-        <a
-            class="breadcrumbs__item"
-            href="/"
-        >Главная</a>
-        <span class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/ru/products"
-        >Продукция</a>
-        <span
-            class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/products/category"
-        > Категория </a>
-        <span
-            class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/products/category/sub"
-        >Подкатегория</a>
-        <span
-            class="breadcrumbs__divider">
-      &nbsp;/&nbsp;
-    </span>
-        <a
-            class="breadcrumbs__item"
-            href="/products/category/sub.product"
-        >Продукт</a>
-    </div>
 
     <div class="home-product-wrapper container">
         <div class="product-home-cloak"></div>

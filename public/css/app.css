@@ -2023,10 +2023,19 @@ footer .footer-down__social .social-network:last-child {
   position: relative;
 }
 
-.content-container {
+.home-product-wrapper .content-container {
   display: flex;
-  padding: 0;
   justify-content: space-between;
+  padding-top: 40px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.home-product-wrapper .breadcrumbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 0;
 }
 
 .navigation-container .category-title {
@@ -2123,7 +2132,6 @@ footer .footer-down__social .social-network:last-child {
   min-height: 930px;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
 .product-wrapper .selected-name {
