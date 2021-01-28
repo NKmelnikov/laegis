@@ -6,7 +6,6 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Services\Admin\BrandService;
-use App\Services\Admin\CatalogService;
 use App\Services\Admin\CategoryService;
 use App\Services\Admin\ProductService;
 use App\Services\Admin\SubcategoryService;
@@ -15,8 +14,6 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller

@@ -38,7 +38,7 @@ export default {
     methods: {
         getEntities(page = 1) {
             axios.post(
-                `/home/catalog/getByBrandSlug?page=${page}`,
+                `/home/catalog/get-by-brand-slug?page=${page}`,
                 {slug: this.getSlug()}
             )
                 .then((res) => {

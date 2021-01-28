@@ -42,6 +42,6 @@ class HomeController extends Controller
         JsonLd::setTitle('Homepage');
         JsonLd::setDescription('This is my page description');
         JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
-        return view('home.main', ['locale' => app()->getLocale()]);
+        return view('home.main.index', ['locale' => app()->getLocale()]);
     }
 }

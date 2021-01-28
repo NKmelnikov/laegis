@@ -56,12 +56,17 @@ Vue.component('admin-subcategory-edit', require('./components/admin/subcategory/
 Vue.component('admin-product', require('./components/admin/product/index.vue').default);
 Vue.component('admin-product-edit', require('./components/admin/product/edit.vue').default);
 
-
 Vue.component('home-catalog', require('./components/home/catalog/index.vue').default);
 
 Vue.component('home-product-list', require('./components/home/product/index.vue').default);
 Vue.component('home-product-item', require('./components/home/product/item.vue').default);
-Vue.component('home-breadcrumbs', require('./components/home/product/breadcrumbs').default);
+Vue.component('home-breadcrumbs', require('./components/home/product/breadcrumbs.vue').default);
+
+Vue.component('second-section', require('./components/home/main/second-section.vue').default);
+Vue.component('third-section', require('./components/home/main/third-section.vue').default);
+Vue.component('fourth-section', require('./components/home/main/fourth-section.vue').default);
+Vue.component('fifth-section', require('./components/home/main/fifth-section.vue').default);
+Vue.component('sixth-section', require('./components/home/main/sixth-section.vue').default);
 
 if(window.location.pathname.includes('admin')) {
     const app = new Vue({
