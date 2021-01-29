@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'home'], function () {
     Route::get('/get-brands', [App\Http\Controllers\Admin\BrandController::class, 'getAll']);
+    Route::get('/get-news', [App\Http\Controllers\Admin\NewsController::class, 'getAll']);
     Route::post('/catalog/get-by-brand-slug', [App\Http\Controllers\CatalogController::class, 'getByBrandSlug']);
     Route::get('/product/get-all', [App\Http\Controllers\ProductController::class, 'getAll']);
     Route::post('/product/get-by-category', [App\Http\Controllers\ProductController::class, 'getByCategory']);

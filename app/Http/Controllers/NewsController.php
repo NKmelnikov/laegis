@@ -70,4 +70,8 @@ class NewsController extends Controller
         JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
         return view('home.news.item', ['locale' => app()->getLocale(), 'item' => $item]);
     }
+
+    public function getAll() {
+        return $this->newsService->getAll();
+    }
 }

@@ -1,6 +1,20 @@
 <template>
     <section id="s5" class="fifth-section">
-        news
+        <div class="title-container container">
+            <a class="title" href="/news">Новости
+                <i class="material-icons md-18">east</i>
+            </a>
+        </div>
+        <carousel v-if="loaded" :items="3" :nav="false" class="news-carousel container">
+                <a class="main-news-wrapper" v-for="item of entities"  :href="'/news/'+item.slug">
+                    <div class="upper-box">
+                        <div class="img-container" v-bind:style="{'background-image': 'url(' + item.imgPath + ')'}"></div>
+                        <div class="date">{{item.created_at | formatDate('d-m-Y') }}</div>
+                        <div class="title">{{ item.title }}</div>
+                        <div class="line line1"></div>
+                    </div>
+                </a>
+        </carousel>
     </section>
 </template>
 <script>
@@ -17,25 +31,25 @@ export default {
 
     },
     mounted() {
-        this.getBrands();
+        this.getNews();
     },
     data: () => ({
         entities: [],
         loaded: false
     }),
     methods: {
-        getBrands() {
-            // axios.get(
-            //     `/home/get-brands`,
-            // )
-            //     .then((res) => {
-            //         this.entities = res.data;
-            //         this.loaded = true;
-            //         console.log(this.entities);
-            //     })
-            //     .catch((error) => {
-            //         console.log(error);
-            //     });
+        getNews() {
+            axios.get(
+                `/home/get-news`,
+            )
+                .then((res) => {
+                    this.entities = res.data;
+                    this.loaded = true;
+                    console.log(this.entities);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }
 }
