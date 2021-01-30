@@ -41,7 +41,6 @@ export default {
                 .then((res) => {
                     this.entities = res.data;
                     this.loaded = true;
-                    console.log(this.entities);
                 })
                 .catch((error) => {
                     console.log(error);

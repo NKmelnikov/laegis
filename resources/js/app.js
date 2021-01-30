@@ -2,6 +2,8 @@ require('./bootstrap');
 
 import Vue from "vue";
 import moment from 'moment'
+import { VueReCaptcha } from "vue-recaptcha-v3";
+Vue.use(VueReCaptcha, { siteKey: "6Lebi8wZAAAAAIBnqQzUohm0qT5NhiOoUOqQTzaK" });
 
 if(window.location.pathname.includes('admin')) {
     require('vue-material/dist/vue-material.min.css')
@@ -67,6 +69,10 @@ Vue.component('third-section', require('./components/home/main/third-section.vue
 Vue.component('fourth-section', require('./components/home/main/fourth-section.vue').default);
 Vue.component('fifth-section', require('./components/home/main/fifth-section.vue').default);
 Vue.component('sixth-section', require('./components/home/main/sixth-section.vue').default);
+
+
+Vue.component('footer-brands', require('./components/layout/footer/brands.vue').default);
+Vue.component('footer-contact-form', require('./components/layout/footer/contact-form.vue').default);
 
 if(window.location.pathname.includes('admin')) {
     const app = new Vue({

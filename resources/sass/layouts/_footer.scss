@@ -52,6 +52,10 @@ footer {
                         color: $main-color1;
                     }
                 }
+
+                &.brands {
+                    margin: 0 0 10px 0;
+                }
             }
 
             .text {
@@ -74,27 +78,117 @@ footer {
             }
 
             &.contact-us {
-                .mat-form-field-label{
-                    color: $main-color5 !important;
-                }
-                .mat-input-element::placeholder {
-                    color: #75797d !important;
-                }
-                .mat-form-field-underline {
-                    background-color: $main-color5 !important;
-                }
-                .mat-form-field-ripple {
-                    background-color: $main-color5 !important;
+                .contact-form-wrapper {
+                    display: flex;
+                    flex-direction: column;
+
+                    .errors {
+
+                        li {
+                            font-size: 12px;
+                            color: #f44336;
+                        }
+                    }
+
+                    .success {
+                        font-size: 12px;
+                        color: #26ae6a;
+                    }
+
+                    .form-input {
+                        margin: 0 0 20px 0;
+                        width: 100%;
+
+                        label {
+                            position: relative;
+                            display: block;
+                            width: 100%;
+                            min-height: 30px + 15px;
+                            color: #9ca5af;
+                        }
+
+                        .placeholder {
+                            position: absolute;
+                            display: block;
+                            top: (30px / 2) + 8px;
+                            z-index: 2;
+                            font-size: 16px;
+                            transition: all 200ms ease-in-out;
+                            width: 100%;
+                            cursor: text;
+                        }
+
+                        input, textarea {
+                            position: absolute;
+                            top: 15px;
+                            z-index: 1;
+                            width: 100%;
+                            font-size: 16px;
+                            border: 0;
+                            border-bottom: 1px solid grey;
+                            transition: border-color 200ms ease-in-out;
+                            outline: none;
+                            padding: 0;
+                            margin: 0;
+                            background: $main-color3;
+                            color: #9ca5af;
+                        }
+
+                        textarea {
+                            min-height: 30px;
+                            padding: 8px 0;
+                        }
+
+                        input {
+                            height: 30px;
+                        }
+
+                        input:focus,
+                        input:valid,
+                        textarea:focus,
+                        textarea:valid {
+                            & + .placeholder {
+                                top: 0;
+                                cursor: inherit;
+                                font-size: 14px;
+                                color: $main-color1;
+                            }
+
+                            border-bottom: 2px solid $main-color1;
+                        }
+                    }
+
+                    button {
+                        background: $main-color1;
+                        margin-top: 30px;
+                        height: 36px;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        color: whitesmoke;
+                    }
                 }
 
-                input, textarea {
-                    color: $main-color5;
-                }
-
-                .send-btn[disabled] {
-                    background-color: $main-color5;
-                    cursor: not-allowed;
-                }
+                //.mat-form-field-label{
+                //    color: $main-color5 !important;
+                //}
+                //.mat-input-element::placeholder {
+                //    color: #75797d !important;
+                //}
+                //.mat-form-field-underline {
+                //    background-color: $main-color5 !important;
+                //}
+                //.mat-form-field-ripple {
+                //    background-color: $main-color5 !important;
+                //}
+                //
+                //input, textarea {
+                //    color: $main-color5;
+                //}
+                //
+                //.send-btn[disabled] {
+                //    background-color: $main-color5;
+                //    cursor: not-allowed;
+                //}
             }
 
             &_info-item {

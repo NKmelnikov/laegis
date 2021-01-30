@@ -18,11 +18,10 @@
     <nav class="item item5 item-about">
         <a href="{{ sprintf('/%s/about',app()->getLocale()) }}">{{ __('layouts/header.about') }}</a>
     </nav>
-    {{app()->getLocale() }}
     <div class="translation">
         @foreach (config('app.available_locales') as $locale)
             <div class="nav-item">
-                <a class="nav-link translation__{{app()->getLocale()}}"
+                <a class="nav-link translation__{{app()->getLocale()}} {{ (app()->getLocale() == $locale) ? 'active' : ''}}"
                    href="
                     {{
                     route(
@@ -30,8 +29,7 @@
                         array_merge(\Illuminate\Support\Facades\Route::current()->parameters(),
                         ['locale'=> $locale])
                         )
-                    }}"
-                   @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                    }}">{{ strtoupper($locale) }}</a>
             </div>
         @endforeach
     </div>
@@ -57,3 +55,4 @@
         </div>
     </nav>
 </header>
+

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Services\Admin\BrandService;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -11,6 +13,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+    private BrandService $brandService;
+
     /**
      * Create a new controller instance.
      *
@@ -18,6 +23,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->brandService = new BrandService(Brand::class);
     }
 
     /**
@@ -27,6 +33,7 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
+        $brands = $this->brandService->getAll();
         SEOMeta::setTitle('Home');
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
@@ -42,6 +49,6 @@ class HomeController extends Controller
         JsonLd::setTitle('Homepage');
         JsonLd::setDescription('This is my page description');
         JsonLd::addImage('https://codecasts.com.br/img/logo.jpg');
-        return view('home.main.index', ['locale' => app()->getLocale()]);
+        return view('home.main.index', ['brands' => $brands]);
     }
 }

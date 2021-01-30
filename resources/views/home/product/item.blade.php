@@ -23,7 +23,4 @@
         </div>
     </div>
 </main>
-@push('single-script')
-    @include('home/product.js')
-@endpush
 @endsection

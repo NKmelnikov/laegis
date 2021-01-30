@@ -1,18 +1,17 @@
 <footer>
     <section class="footer-up container">
         <div class="footer-up__item brands">
-            <a href="/catalogs">
-                <h3 routerLink="/catalogs" class="title clickable">Брэнды</h3>
+            <a href="{{ sprintf('/%s/catalogs', app()->getLocale()) }}">
+                <h3 class="title brands clickable">Бренды</h3>
             </a>
-            <div class="brands-link-wrapper">
-{{--                TODO --}}
-{{--                <a *ngFor="let brand of brandList" class="text" [routerLink]="'/catalogs/'+ brand.slug">{{brand.name}}</a>--}}
-            </div>
+            <footer-brands></footer-brands>
         </div>
         <div class="footer-up__item services">
-            <h3 routerLink="/services" class="title clickable">Услуги</h3>
-            <a class="text" href="/services/metalworking">Комплексная металлообработка</a>
-            <a class="text" href="/services/recovery">Восстановление инструмента</a>
+            <a href="{{ sprintf('/%s/services', app()->getLocale()) }}">
+                <h3 class="title brands clickable">Услуги</h3>
+            </a>
+            <a class="text" href="{{ sprintf('/%s/services/metalworking', app()->getLocale()) }}">Комплексная металлообработка</a>
+            <a class="text" href="{{ sprintf('/%s/services/recovery', app()->getLocale()) }}">Восстановление инструмента </a>
         </div>
         <div class="footer-up__item">
             <h3 class="title">Контакты</h3>
@@ -37,31 +36,8 @@
         </div>
         <div class="footer-up__item contact-us">
             <h3 class="title">Напишите нам</h3>
-{{--            <mat-form-field class="example-full-width">--}}
-{{--                <mat-label>Email</mat-label>--}}
-{{--                <input--}}
-{{--                    type="email"--}}
-{{--                    matInput--}}
-{{--                    [formControl]="emailFormControl"--}}
-{{--                    [errorStateMatcher]="matcher"--}}
-{{--                    [(ngModel)]="email"--}}
-{{--                    placeholder="{{ t('layout.footer.for_example') }}, boss@site.com"--}}
-{{--                    color="warn">--}}
-{{--                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">--}}
-{{--                    {{ t('layout.footer.correct_email_notification') }}--}}
-{{--                </mat-error>--}}
-{{--                <mat-error *ngIf="emailFormControl.hasError('required')">--}}
-{{--                    {{ t('layout.footer.email_is_required_notification') }}--}}
-{{--                </mat-error>--}}
-{{--            </mat-form-field>--}}
+            <footer-contact-form></footer-contact-form>
 
-{{--            <mat-form-field class="example-full-width">--}}
-{{--                <mat-label>{{ t('layout.footer.question') }}</mat-label>--}}
-{{--                <textarea matInput [(ngModel)]="text" placeholder=""></textarea>--}}
-{{--            </mat-form-field>--}}
-{{--            <button class="send-btn" mat-raised-button [disabled]="blockFormButton()" (click)="sendMessageToTelegram()" color="warn">--}}
-{{--                <mat-label>{{ t('layout.footer.send') }}</mat-label>--}}
-{{--            </button>--}}
         </div>
     </section>
     <section class="fronter-down-wrapper">

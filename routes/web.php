@@ -30,6 +30,7 @@ Route::group(['prefix' => 'home'], function () {
     Route::post('/product/get-category', [App\Http\Controllers\ProductController::class, 'getCategory']);
     Route::post('/product/get-subcategory', [App\Http\Controllers\ProductController::class, 'getSubcategory']);
     Route::post('/product/get-brand', [App\Http\Controllers\ProductController::class, 'getBrand']);
+    Route::post('/check-recaptcha', [App\Http\Controllers\RecaptchaController::class, 'checkValidity']);
 });
 
 Route::post('/frola-upload', [App\Http\Controllers\Admin\UploadController::class, 'frolaUpload']);
