@@ -13,14 +13,14 @@ footer {
             align-items: center;
             justify-content: space-around;
             margin-bottom: 30px;
-            padding-bottom: 0;
+            padding: 20px 20px 0 20px;
         }
 
         @media #{$mobile} {
             flex-direction: column-reverse;
             align-items: center;
             margin-bottom: 30px;
-            padding-bottom: 0;
+            padding: 20px 20px 0 20px;
         }
 
         &__item {
@@ -167,6 +167,7 @@ footer {
                         color: whitesmoke;
                     }
                 }
+
 
                 //.mat-form-field-label{
                 //    color: $main-color5 !important;

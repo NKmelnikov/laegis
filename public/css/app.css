@@ -361,6 +361,14 @@ header .translation__en:hover {
   letter-spacing: 6px;
 }
 
+@media (max-width: 1024px) {
+  .header-container .header-box__title {
+    font-size: 24px;
+    padding-left: 20px;
+    letter-spacing: 4px;
+  }
+}
+
 .header-container .header-box__text {
   font-size: 14px;
   height: 150px;
@@ -384,7 +392,7 @@ footer .footer-up {
     align-items: center;
     justify-content: space-around;
     margin-bottom: 30px;
-    padding-bottom: 0;
+    padding: 20px 20px 0 20px;
   }
 }
 
@@ -393,7 +401,7 @@ footer .footer-up {
     flex-direction: column-reverse;
     align-items: center;
     margin-bottom: 30px;
-    padding-bottom: 0;
+    padding: 20px 20px 0 20px;
   }
 }
 
@@ -1228,6 +1236,12 @@ footer .footer-down__social .social-network:last-child {
   margin-bottom: 40px;
 }
 
+@media (max-width: 1024px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+}
+
 .pagination .page-item {
   width: 40px;
   height: 40px;
@@ -1334,6 +1348,99 @@ footer .footer-down__social .social-network:last-child {
 
 .breadcrumbs__divider {
   color: #9e9e9e;
+}
+
+.home-product-modal-wrapper .vm--modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+}
+
+.home-product-modal-wrapper .errors li {
+  font-size: 12px;
+  color: #f44336;
+}
+
+.home-product-modal-wrapper .success {
+  font-size: 12px;
+  color: #26ae6a;
+}
+
+.home-product-modal-wrapper .form-input {
+  margin: 0 0 20px 0;
+  width: 100%;
+}
+
+.home-product-modal-wrapper .form-input label {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 45px;
+  color: #9ca5af;
+}
+
+.home-product-modal-wrapper .form-input .placeholder {
+  position: absolute;
+  display: block;
+  top: 23px;
+  z-index: 2;
+  font-size: 16px;
+  transition: all 200ms ease-in-out;
+  width: 100%;
+  cursor: text;
+}
+
+.home-product-modal-wrapper .form-input input,
+.home-product-modal-wrapper .form-input textarea {
+  position: absolute;
+  top: 15px;
+  z-index: 1;
+  width: 100%;
+  font-size: 16px;
+  border: 0;
+  border-bottom: 1px solid grey;
+  transition: border-color 200ms ease-in-out;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  color: #0a1229;
+}
+
+.home-product-modal-wrapper .form-input textarea {
+  min-height: 30px;
+  padding: 8px 0;
+}
+
+.home-product-modal-wrapper .form-input input {
+  height: 30px;
+}
+
+.home-product-modal-wrapper .form-input input:focus,
+.home-product-modal-wrapper .form-input input:valid,
+.home-product-modal-wrapper .form-input textarea:focus,
+.home-product-modal-wrapper .form-input textarea:valid {
+  border-bottom: 2px solid #002359;
+}
+
+.home-product-modal-wrapper .form-input input:focus + .placeholder,
+.home-product-modal-wrapper .form-input input:valid + .placeholder,
+.home-product-modal-wrapper .form-input textarea:focus + .placeholder,
+.home-product-modal-wrapper .form-input textarea:valid + .placeholder {
+  top: 0;
+  cursor: inherit;
+  font-size: 14px;
+  color: #002359;
+}
+
+.home-product-modal-wrapper button {
+  background: #ff5e15;
+  margin-top: 30px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: whitesmoke;
+  width: 100%;
 }
 
 .main-wrapper {
@@ -2309,15 +2416,10 @@ footer .footer-down__social .social-network:last-child {
   margin-bottom: 40px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .about-container .first-section {
     flex-direction: column-reverse;
-  }
-}
-
-@media (max-width: 767px) {
-  .about-container .first-section {
-    flex-direction: column-reverse;
+    margin-top: 40px;
   }
 }
 
@@ -2500,8 +2602,10 @@ footer .footer-down__social .social-network:last-child {
   min-height: 339px;
 }
 
-.news-item-container img {
-  margin-bottom: 40px;
+@media (max-width: 1024px) {
+  .news-item-container {
+    padding: 12px;
+  }
 }
 
 .catalog-home-wrapper {
@@ -2643,6 +2747,12 @@ footer .footer-down__social .social-network:last-child {
 .brand-description {
   margin-bottom: 40px;
   min-height: 500px;
+}
+
+@media (max-width: 1024px) {
+  .brand-description {
+    padding: 15px;
+  }
 }
 
 .catalogs-container {
@@ -3182,8 +3292,26 @@ footer .footer-down__social .social-network:last-child {
   height: 600px;
 }
 
+@media (max-width: 1024px) {
+  .metalworking-wrapper .fourth-section .equipment-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .metalworking-wrapper .fourth-section .equipment-container #carouselExampleIndicators {
+    width: 100%;
+  }
+}
+
 .metalworking-wrapper .fourth-section .equipment-container .carousel-inner {
   height: 600px;
+}
+
+@media (max-width: 1024px) {
+  .metalworking-wrapper .fourth-section .equipment-container .carousel-inner {
+    height: 300px;
+  }
 }
 
 .metalworking-wrapper .fourth-section .equipment-container .carousel-inner .carousel-item .carousel-image {
@@ -3192,6 +3320,13 @@ footer .footer-down__social .social-network:last-child {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+@media (max-width: 1024px) {
+  .metalworking-wrapper .fourth-section .equipment-container .carousel-inner .carousel-item .carousel-image {
+    height: 300px;
+    width: 100%;
+  }
 }
 
 .metalworking-wrapper .fourth-section .equipment-container .carousel-control-prev,
@@ -3206,6 +3341,12 @@ footer .footer-down__social .social-network:last-child {
 
 .recovery-wrapper {
   margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .recovery-wrapper {
+    padding: 12px;
+  }
 }
 
 .recovery-wrapper .title {
@@ -3328,6 +3469,15 @@ footer .footer-down__social .social-network:last-child {
   padding-right: 0;
 }
 
+@media (max-width: 1024px) {
+  .home-product-wrapper .content-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+}
+
 .home-product-wrapper .breadcrumbs {
   position: absolute;
   top: 0;
@@ -3431,9 +3581,21 @@ footer .footer-down__social .social-network:last-child {
   flex-direction: column;
 }
 
+@media (max-width: 1024px) {
+  .product-wrapper {
+    width: 100%;
+  }
+}
+
 .product-wrapper .selected-name {
   font-size: 26px;
   margin-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+  .product-wrapper .selected-name {
+    padding-left: 20px;
+  }
 }
 
 .product-container {
@@ -3457,6 +3619,7 @@ footer .footer-down__social .social-network:last-child {
     justify-content: center;
     align-items: center;
     height: auto;
+    width: 100%;
   }
 }
 

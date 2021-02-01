@@ -1,6 +1,8 @@
 const product = {
     pathArray: window.location.pathname.split('/'),
     productCloak: $('.product-home-cloak'),
+    pageItem: $('.page-item'),
+    scrollTo: $('.scroll-to'),
 
     getSlug() {
         return window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1)
@@ -31,6 +33,14 @@ $(document).ready(function() {
     product.handleCollapse();
     header.contactBurger.click(header.toggleSideBar);
     header.cross.click(header.toggleSideBar);
+
+    setTimeout(() => {
+        $('.page-item').click(() => {
+            $('.scroll-to')[0].scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }, 1000);
 });
 
 $(document).mouseup(function(e)
@@ -44,4 +54,5 @@ $(document).mouseup(function(e)
 
 $(window).on('load', function() {
     product.productCloak.fadeOut('fast');
+
 });

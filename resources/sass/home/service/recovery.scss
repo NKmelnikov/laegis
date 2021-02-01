@@ -6,6 +6,10 @@
 .recovery-wrapper {
     margin-top: 20px;
 
+    @media #{$noDesktop} {
+        padding: 12px;
+    }
+
     .title {
         font-size: 30px;
         font-weight: bolder;
@@ -32,7 +36,7 @@
             img {
                 width: 100%;
                 margin-bottom: 40px;
-                box-shadow: 0 2px 10px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14),
+                box-shadow: 0 2px 10px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14),
             }
         }
 
@@ -53,20 +57,20 @@
         }
     }
 
-    .third-section{
+    .third-section {
         margin-bottom: 50px;
 
-        .coating-item{
+        .coating-item {
             margin-bottom: 20px;
             @extend %fsb;
             background: #f7fafd;
-            transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+            transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
             position: relative;
             padding: 16px;
             border-radius: 4px;
             font-size: 13px;
             font-weight: 300;
-            box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+            box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
 
             @media #{$mobile} {
                 flex-direction: column;

@@ -6,6 +6,10 @@
 .brand-description {
     margin-bottom: 40px;
     min-height: 500px;
+
+    @media #{$noDesktop} {
+        padding: 15px;
+    }
 }
 
 .catalogs-container {

@@ -143,8 +143,23 @@
             flex-wrap: wrap;
             height: 600px;
 
+            @media #{$noDesktop} {
+                height: 300px;
+            }
+
+
+            #carouselExampleIndicators {
+                @media #{$noDesktop} {
+                    width: 100%;
+                }
+            }
+
             .carousel-inner {
                 height: 600px;
+
+                @media #{$noDesktop} {
+                    height: 300px;
+                }
 
                 .carousel-item {
 
@@ -155,6 +170,11 @@
                         background-repeat: no-repeat;
                         background-size: contain;
                         background-position: center;
+
+                        @media #{$noDesktop} {
+                            height: 300px;
+                            width: 100%;
+                        }
                     }
                 }
             }

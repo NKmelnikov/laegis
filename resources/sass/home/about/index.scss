@@ -60,12 +60,9 @@
         width: 100%;
         margin-bottom: 40px;
 
-        @media #{$tablet} {
+        @media #{$noDesktop} {
             flex-direction: column-reverse;
-        }
-
-        @media #{$mobile} {
-            flex-direction: column-reverse;
+            margin-top: 40px;
         }
 
         .img-container {

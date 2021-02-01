@@ -1,6 +1,8 @@
 <template>
     <section class="product-keeper">
+        <product-modal></product-modal>
         <home-breadcrumbs :locale="locale" :breadcrumbs="breadcrumbs"></home-breadcrumbs>
+        <div class="scroll-to"></div>
         <div id="current-view-name" class="selected-name">{{ pageTitle }}</div>
         <div class="product-container">
             <div v-if="entities.data.length === 0">В этой категории продукты не представлены</div>
@@ -11,7 +13,7 @@
                     <div class="product-item__content description" v-html="$options.filters.truncate(item.description, 186)"></div>
                 </div>
                 <div class="product-item__actions button-container">
-                    <button class="price aegis-btn">Запросить цену</button>
+                    <button class="price aegis-btn" @click="showModal({item: item, obj: getSendObject(item)})">Запросить цену</button>
                     <a class="more aegis-btn" :href="getProductLink(item)">Подробнее</a>
                 </div>
             </div>
@@ -28,6 +30,7 @@ import {homeMixin} from "../../../mixins/homeMixin";
 
 export default {
     mixins: [homeMixin],
+    component: 'modal',
     props: ['locale', 'type', 'categories'],
     mounted() {
         this.getEntities();
@@ -39,6 +42,8 @@ export default {
         activeCategory: '',
         activeSubcategory: '',
         activeBrand: '',
+        email: '',
+        text: '',
         breadcrumbs: {
             category: {
                 name: null,
@@ -159,7 +164,6 @@ export default {
                     console.log(error);
                 });
         },
-
         getSubcategory(){
             axios.post(
                 `/home/product/get-subcategory`,
@@ -182,7 +186,6 @@ export default {
                     console.log(error);
                 });
         },
-
         getBrand(){
             axios.post(
                 `/home/product/get-brand`,
@@ -214,7 +217,17 @@ export default {
             if (locale !== 'ru') {
                 this.pageTitle = 'All products';
             }
-        }
+        },
+
+        getSendObject(item) {
+            return {
+                type: `*Заявка*`,
+                name: item.name,
+                category_name: item.category_name,
+                subcategory_name: item.subcategory_name,
+                brand_name: item.brand_name,
+            }
+        },
     }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
     <section class="admin-entity-wrapper">
+        <div class="scroll-to"></div>
         <section class="catalogs-container container">
             <div class="catalog-keeper" >
                 <div class="catalog-multiplier" v-for="entity in entities.data">
@@ -47,7 +48,7 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-        }
+        },
     }
 }
 </script>

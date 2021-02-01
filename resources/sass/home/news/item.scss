@@ -9,7 +9,7 @@
     padding: 40px 0;
     min-height: 339px;
 
-    img {
-        margin-bottom: 40px;
+    @media #{$noDesktop} {
+        padding: 12px;
     }
 }

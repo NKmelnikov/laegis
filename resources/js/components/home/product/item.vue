@@ -1,5 +1,6 @@
 <template>
         <section class="product-item-keeper">
+            <product-modal></product-modal>
             <home-breadcrumbs :locale="locale" :breadcrumbs="breadcrumbs"></home-breadcrumbs>
 
             <div id="current-view-name" class="selected-name">{{getTranslations(entity, 'name')}}</div>
@@ -24,7 +25,7 @@
                                 <i class="material-icons md-18">file_download</i>
                                 Паспорт качества
                             </a>
-                            <button class="threeBtns button-container__order-btn">Заказать</button>
+                            <button class="threeBtns button-container__order-btn" @click="showModal({item: entity, obj: getSendObject(entity)})">Заказать</button>
                         </div>
                     </div>
                 </div>
@@ -46,6 +47,8 @@ export default {
         this.getEntity();
     },
     data: () => ({
+        email: '',
+        text: '',
         entity: [],
         entityName: '',
         breadcrumbs: {
@@ -84,6 +87,15 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        getSendObject(item) {
+            return {
+                type: `*Заказать*`,
+                name: item.name,
+                category_name: item.category_name,
+                subcategory_name: item.subcategory_name,
+                brand_name: item.brand_name,
+            }
         },
     }
 }

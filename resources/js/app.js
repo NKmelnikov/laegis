@@ -4,6 +4,10 @@ import Vue from "vue";
 import moment from 'moment'
 import { VueReCaptcha } from "vue-recaptcha-v3";
 Vue.use(VueReCaptcha, { siteKey: "6Lebi8wZAAAAAIBnqQzUohm0qT5NhiOoUOqQTzaK" });
+import VModal from 'vue-js-modal'
+import 'vue-js-modal/dist/styles.css'
+Vue.use(VModal);
+
 
 if(window.location.pathname.includes('admin')) {
     require('vue-material/dist/vue-material.min.css')
@@ -63,6 +67,7 @@ Vue.component('home-catalog', require('./components/home/catalog/index.vue').def
 Vue.component('home-product-list', require('./components/home/product/index.vue').default);
 Vue.component('home-product-item', require('./components/home/product/item.vue').default);
 Vue.component('home-breadcrumbs', require('./components/home/product/breadcrumbs.vue').default);
+Vue.component('product-modal', require('./components/home/product/modal.vue').default);
 
 Vue.component('second-section', require('./components/home/main/second-section.vue').default);
 Vue.component('third-section', require('./components/home/main/third-section.vue').default);
@@ -73,6 +78,7 @@ Vue.component('sixth-section', require('./components/home/main/sixth-section.vue
 
 Vue.component('footer-brands', require('./components/layout/footer/brands.vue').default);
 Vue.component('footer-contact-form', require('./components/layout/footer/contact-form.vue').default);
+
 
 if(window.location.pathname.includes('admin')) {
     const app = new Vue({

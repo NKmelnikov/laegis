@@ -7,22 +7,22 @@
     </div>
     <div class="link-box">
         <nav class="item item1 item-main">
-            <a href="/">Главная</a>
+            <a href="{{ sprintf('/%s', app()->getLocale()) }}">Главная</a>
         </nav>
         <nav class="item item2 item-products">
-            <a href="/products">Продукция</a>
+            <a href="{{ sprintf('/%s/products', app()->getLocale()) }}">Продукция</a>
         </nav>
         <nav class="item item3 item-products">
-            <a href="/services">Услуги</a>
+            <a href="{{ sprintf('/%s/services', app()->getLocale()) }}">Услуги</a>
         </nav>
         <nav class="item item4 item-catalogs">
-            <a href="/catalogs">Бренды и Каталоги</a>
+            <a href="{{ sprintf('/%s/catalogs', app()->getLocale()) }}">Каталоги</a>
         </nav>
         <nav class="item item5 item-news">
-            <a href="/news">Новости</a>
+            <a href="{{ sprintf('/%s/news', app()->getLocale()) }}">Новости</a>
         </nav>
         <nav class="item item6 item-about">
-            <a href="/about">О нас</a>
+            <a href="{{ sprintf('/%s/about', app()->getLocale()) }}">О нас</a>
         </nav>
     </div>
     <div class="info-box">
