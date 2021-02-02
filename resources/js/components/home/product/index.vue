@@ -5,7 +5,7 @@
         <div class="scroll-to"></div>
         <div id="current-view-name" class="selected-name">{{ pageTitle }}</div>
         <div class="product-container">
-            <div v-if="entities.data.length === 0">В этой категории продукты не представлены</div>
+            <div v-if="entities.data.length === 0">{{ __('product.index.no_products') }}</div>
             <div v-else class="product-item" v-for="item in entities.data">
                 <div class="product-img" v-bind:style="{'background-image': 'url(' + item.imgPath + ')'}"></div>
                 <div class="product-title-desc-container">
@@ -13,8 +13,8 @@
                     <div class="product-item__content description" v-html="$options.filters.truncate(item.description, 186)"></div>
                 </div>
                 <div class="product-item__actions button-container">
-                    <button class="price aegis-btn" @click="showModal({item: item, obj: getSendObject(item)})">Запросить цену</button>
-                    <a class="more aegis-btn" :href="getProductLink(item)">Подробнее</a>
+                    <button class="price aegis-btn" @click="showModal({item: item, obj: getSendObject(item)})">{{ __('product.index.request_price') }}</button>
+                    <a class="more aegis-btn" :href="getProductLink(item)">{{ __('product.index.more') }}</a>
                 </div>
             </div>
         </div>

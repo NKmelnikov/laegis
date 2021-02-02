@@ -7,6 +7,7 @@ use App\Services\Admin\ProductService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController
 {
@@ -47,6 +48,7 @@ class ProductController
     public function getEditView(Request $request): Renderable {
         $entity = $this->productService->getBySlug($request);
         $entity->action = 'edit';
+
         return view('admin.product.edit')->with(['entity' => $entity]);
     }
 

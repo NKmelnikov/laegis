@@ -190,6 +190,7 @@ export default {
     mounted() {
         this.getBrands();
         this.getCategories();
+        console.log(this.entity);
 
         if (this.entity.category_id) {
             this.getSubcategories()

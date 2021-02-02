@@ -1,11 +1,11 @@
 <template>
     <div class="breadcrumbs container" id="breadcrumbs-products">
-        <a class="breadcrumbs__item" href="/">Главная</a>
+        <a class="breadcrumbs__item" href="/">{{ __('layouts.header.main') }}</a>
         <span class="breadcrumbs__divider"> &nbsp;/&nbsp;</span>
         <a
             class="breadcrumbs__item"
             v-bind:class="{ 'current': getSlug() === 'products'}"
-            :href="`/${locale}/products`">Продукция
+            :href="`/${locale}/products`">{{ __('product.index.products') }}
         </a>
         <span class="category breadcrumbs__divider" v-if="breadcrumbs.category.name != null"> &nbsp;/&nbsp; </span>
         <a

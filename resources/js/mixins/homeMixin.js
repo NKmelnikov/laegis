@@ -70,7 +70,7 @@ export const homeMixin = {
                     obj
                 )
                     .then((res) => {
-                        this.successMessage = 'Форма успешно отправлена, мы свяжемся с вами в ближайшее время!'
+                        this.successMessage = this.__('layouts.footer.success_message')
                         this.resetForm()
                     })
                     .catch((error) => {
@@ -80,13 +80,13 @@ export const homeMixin = {
 
             isValidForm() {
                 if (!this.email || this.email === '') {
-                    this.errors.push('Email не введён');
+                    this.errors.push(this.__('layouts.footer.err1'));
                 } else if (!this.isValidEmail(this.email)) {
-                    this.errors.push('Email некорректный');
+                    this.errors.push(this.__('layouts.footer.err2'));
                 }
 
                 if (!this.text || this.text === '') {
-                    this.errors.push('Вопрос не введён');
+                    this.errors.push(this.__('layouts.footer.err3'));
                 }
 
                 return !this.errors.length;

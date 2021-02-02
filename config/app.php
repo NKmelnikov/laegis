@@ -164,7 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
-
+        App\Providers\TranslationServiceProvider::class,
 
         /*
          * Package Service Providers...

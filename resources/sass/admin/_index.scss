@@ -1,3 +1,21 @@
+.admin-sidebar-wrapper {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        text-transform: none;
+
+        &:hover {
+            background: lightgrey;
+        }
+    }
+}
+
 .admin-entity-wrapper {
     width: 100%;
 
@@ -5,7 +23,7 @@
         height: 50px;
     }
 
-    .search-input{
+    .search-input {
         width: 200px;
         margin-right: 20px;
     }
@@ -18,7 +36,7 @@
         }
     }
 
-    .option-container{
+    .option-container {
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -79,7 +97,7 @@
                 border-radius: 4px;
                 border: transparent;
                 margin-left: 5px;
-                font-size:16px;
+                font-size: 16px;
 
                 &.active {
                     outline: none;

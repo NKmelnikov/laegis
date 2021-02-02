@@ -42,13 +42,39 @@
         width: 100%;
         cursor: pointer;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         transition: .2s ease-out;
         margin-bottom: 20px;
 
         @media #{$mobile} {
             margin-bottom: 0;
+        }
+
+        .translation {
+
+            @media #{$desktop} {
+                display: none;
+            }
+
+            @media #{$noDesktop} {
+                display: flex;
+            }
+
+            .nav-item {
+                margin-right: 1px;
+                width: 40px;
+                height: 40px;
+                background: $main-color1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+            }
         }
 
         &:hover {

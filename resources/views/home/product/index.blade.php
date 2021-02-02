@@ -11,7 +11,7 @@
 @endsection
 
 <main class="products-home-wrapper">
-    @include('layouts/header-second', ['message' => 'Продукция'])
+    @include('layouts/header-second', ['message' => __('product.index.products')])
 {{--    <home-breadcrumbs :locale="{{ json_encode(app()->getLocale(), true) }}"></home-breadcrumbs>--}}
 
     <div class="home-product-wrapper container">

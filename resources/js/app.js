@@ -1,12 +1,14 @@
 require('./bootstrap');
 
 import Vue from "vue";
+Vue.mixin(require('./trans'))
 import moment from 'moment'
 import { VueReCaptcha } from "vue-recaptcha-v3";
 Vue.use(VueReCaptcha, { siteKey: "6Lebi8wZAAAAAIBnqQzUohm0qT5NhiOoUOqQTzaK" });
 import VModal from 'vue-js-modal'
 import 'vue-js-modal/dist/styles.css'
 Vue.use(VModal);
+
 
 
 if(window.location.pathname.includes('admin')) {

@@ -132,7 +132,7 @@ class ProductService extends BaseService
             ->first();
 
         try {
-            return response()->json($entity);
+            return $entity;
         } catch (Exception $e) {
             return response()->json(["message" => $e->getMessage()], 400);
         }

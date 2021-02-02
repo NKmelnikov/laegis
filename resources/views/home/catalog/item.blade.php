@@ -14,14 +14,14 @@
         <a
             class="breadcrumbs__item"
             href="{{ sprintf('/%s/',app()->getLocale()) }}"
-        >{{ __('layouts/header.main') }}</a>
+        >{{ __('layouts.header.main') }}</a>
         <span class="breadcrumbs__divider">
       &nbsp;/&nbsp;
     </span>
         <a
             class="breadcrumbs__item"
             href="{{ sprintf('/%s/catalogs',app()->getLocale()) }}"
-        >{{ __('layouts/header.catalogs') }}</a>
+        >{{ __('layouts.header.catalogs') }}</a>
         <span
             class="breadcrumbs__divider">
       &nbsp;/&nbsp;

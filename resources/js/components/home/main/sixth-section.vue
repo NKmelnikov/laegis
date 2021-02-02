@@ -32,7 +32,6 @@ export default {
 
     },
     mounted() {
-        this.getBrands();
     },
     data: () => ({
         entities: [],

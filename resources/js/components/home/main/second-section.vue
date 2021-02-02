@@ -2,51 +2,42 @@
     <section id="s2" class="second-section">
         <div class="second-section__advantages adv-section_js container">
             <div class="second-section__advantages-item text-item">
-                <div class="title">Преимущества <br> нашей компании</div>
+                <div class="title">{{ __('main.second.advantages_title') }}</div>
                 <div class="line"></div>
-                <div class="text">Мы сотрудничаем с крупнейшими производственными компания по всему миру</div>
+                <div class="text">{{ __('main.second.advantages_text') }}</div>
             </div>
             <div class="second-section__advantages-item">
                 <div class="title">{{ clients }}</div>
                 <div class="line"></div>
-                <div class="text">Клиентов</div>
+                <div class="text">{{ __('main.second.clients') }}</div>
             </div>
             <div class="second-section__advantages-item">
                 <div class="title">{{ yearsOrMarket }}</div>
                 <div class="line"></div>
-                <div class="text">Лет <br> на рынке</div>
+                <div class="text">{{ __('main.second.years') }}</div>
             </div>
             <div class="second-section__advantages-item">
                 <div class="title">{{ developers }}</div>
                 <div class="line"></div>
-                <div class="text">Лучших <br> производителей</div>
+                <div class="text">{{ __('main.second.providers') }}</div>
             </div>
             <div class="second-section__advantages-item">
                 <div class="title">{{ countries }}</div>
                 <div class="line"></div>
-                <div class="text">Стран <br> отгрузки</div>
+                <div class="text">{{ __('main.second.countries') }}</div>
             </div>
         </div>
         <div class="second-section__partner container">
             <img src="/img/back0.png" alt="">
             <div class="second-section__partner-info">
                 <div class="title">
-                    Ваш надёжный <br> партнёр и поставщик
+                    {{ __('main.second.your_partner_title') }}
                 </div>
                 <div class="line"></div>
                 <div class="text">
-                    Мы работаем с высококачественными материалами
-                    и предоставляем отличный сервис, потому что
-                    считаем, что это единственный способ работать
-                    хорошо. Мы каждый день тестируем наши продукты
-                    с клиентами, каждый день в постоянном процессе
-                    разработки, где единственные вещи, которые
-                    считаются важными - это факты, цифры и отчеты.
-                    Мы используем нашу гибкость, потому что это
-                    позволяет нам сосредоточиться на деталях и
-                    предлагать своим клиентам индивидуальные решения.
+                    {{ __('main.second.your_partner_text') }}
                 </div>
-                <a class="btn" href="/about">Подробнее</a>
+                <a class="btn" :href="`${locale}/about`">{{ __('main.second.more') }}</a>
             </div>
         </div>
     </section>
@@ -64,6 +55,7 @@ export default {
         window.addEventListener('scroll', this.handleScroll);
     },
     mounted() {
+        console.log(this.locale);
 
     },
     data: () => ({

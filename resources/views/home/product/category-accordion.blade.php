@@ -1,6 +1,6 @@
 <aside class="navigation-container">
     <div class="category-title">
-        Категории
+	    {{ __('product.index.categories') }}
     </div>
     <div id="accordion">
         @foreach($categories as $category)

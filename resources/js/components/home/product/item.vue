@@ -16,16 +16,16 @@
                                target="_blank"
                                class="threeBtns button-container__consult1-btn">
                                 <i class="material-icons md-18">file_download</i>
-                                Тех. описание
+                                {{  __('product.item.tech_desc')  }}
                             </a>
                             <a v-if="entity.pdf2Path != null"
                                :href="entity.pdf2Path"
                                target="_blank"
                                class="threeBtns button-container__consult2-btn">
                                 <i class="material-icons md-18">file_download</i>
-                                Паспорт качества
+                                {{ __('product.item.quality_passport') }}
                             </a>
-                            <button class="threeBtns button-container__order-btn" @click="showModal({item: entity, obj: getSendObject(entity)})">Заказать</button>
+                            <button class="threeBtns button-container__order-btn" @click="showModal({item: entity, obj: getSendObject(entity)})">{{ __('product.item.order') }}</button>
                         </div>
                     </div>
                 </div>

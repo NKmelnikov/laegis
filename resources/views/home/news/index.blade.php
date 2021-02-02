@@ -9,7 +9,7 @@
     {!! JsonLd::generate() !!}
 @endsection
 <main class="news-wrapper">
-    @include('layouts.header-second', ['message' => __('layouts/header.news')])
+    @include('layouts.header-second', ['message' => __('layouts.header.news')])
     <section class="news-container">
         @foreach ($news as $item)
                 <div class="news-block">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="news-block__actions">
                         <div class="news-block__date">{{ $item->created_at->format('d-m-Y') }}</div>
-                        <a class="aegis-btn action-btn" href="{{ sprintf('/%s/news/%s', app()->getLocale(), $item->slug) }}">{{ __('news/index.readMore') }}</a>
+                        <a class="aegis-btn action-btn" href="{{ sprintf('/%s/news/%s', app()->getLocale(), $item->slug) }}">{{ __('news.readMore') }}</a>
                     </div>
                     </a>
                 </div>

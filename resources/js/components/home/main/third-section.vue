@@ -6,13 +6,11 @@
                     <img src="/img/hands.png" alt="">
                 </div>
                 <div class="line"></div>
-                <div class="small-title">официальные</div>
-                <div class="big-title">гарантии качества</div>
-                <div class="medium-title">Поставляемой нами <br> продукции</div>
+                <div class="small-title">{{ __('main.third.small_title1')}}</div>
+                <div class="big-title">{{ __('main.third.big_title1')}}</div>
+                <div class="medium-title">{{ __('main.third.medium_title1')}}</div>
                 <div class="text">
-                    Наша компания гаратирует замену любой
-                    некачественной продукции и предоставляет
-                    полную гарантию качества.
+                    {{ __('main.third.text1')}}
                 </div>
             </div>
             <div class="third-section__1_item proof-item_js">
@@ -20,12 +18,11 @@
                     <img src="/img/hands.png" alt="">
                 </div>
                 <div class="line"></div>
-                <div class="small-title">официальный</div>
-                <div class="big-title">представитель</div>
-                <div class="medium-title">компаний-производителей с мировым именем</div>
+                <div class="small-title">{{ __('main.third.small_title2')}}</div>
+                <div class="big-title">{{ __('main.third.big_title2')}}</div>
+                <div class="medium-title">{{ __('main.third.medium_title2')}}</div>
                 <div class="text">
-                    Мы являемся официальным представителем нескольких
-                    крупнейших мировых производственных компаний.
+                    {{ __('main.third.text2')}}
                 </div>
             </div>
             <div class="third-section__1_item proof-item_js">
@@ -33,45 +30,28 @@
                     <img src="/img/money.png" alt="">
                 </div>
                 <div class="line"></div>
-                <div class="small-title">удобная и гибкая</div>
-                <div class="big-title">система оплаты</div>
-                <div class="medium-title">мы найдем индивидуальный подход к каждому клиенту</div>
-                <div class="text">
-                    Наша компания предоставляет гибкие условия оплаты.
-                    Свяжитесь с нами и мы найдём удобное решение.
-                </div>
+                <div class="small-title">{{ __('main.third.small_title3')}}</div>
+                <div class="big-title">{{ __('main.third.big_title3')}}</div>
+                <div class="medium-title">{{ __('main.third.medium_title3')}}</div>
+                <div class="text">{{ __('main.third.text3')}}</div>
             </div>
             <div class="third-section__1_item proof-item_js">
                 <div class="img-container">
                     <img src="/img/car.png" alt="">
                 </div>
                 <div class="line"></div>
-                <div class="small-title">быстрая</div>
-                <div class="big-title">доставка до места</div>
-                <div class="medium-title">в течении самых коротких сроков из возможных</div>
-                <div class="text">
-                    Мы доставим продукцию в кротчайшие сроки,
-                    максимально удобным для Вас способом.
-                </div>
+                <div class="small-title">{{ __('main.third.small_title4')}}</div>
+                <div class="big-title">{{ __('main.third.big_title4')}}</div>
+                <div class="medium-title">{{ __('main.third.medium_title4')}}</div>
+                <div class="text">{{ __('main.third.text4')}}</div>
             </div>
         </div>
         <div class="third-section__2 quality-section_js container">
             <div class="third-section__2_info quality-section-left_js">
-                <div class="title">Оцените <br> качество нашей <br> продукции</div>
+                <div class="title">{{ __('main.third.appreciate_title')}}</div>
                 <div class="line"></div>
-                <div class="text">
-                    Уверенность в качестве является для нас
-                    одним из главных приоритетов в работе с вами!
-                    Под этим девизом мы понимаем: качественную
-                    и стабильную продукцию, своевременно оказанные
-                    услуги и грамотную техническую поддержку,
-                    таким образом: надежность в
-                    качестве — надежность во всем!
-                    Мы используем передовые технологии как
-                    в области подбора продукции, так и в области коммуникаций,
-                    логистики и технической поддержки.
-                </div>
-                <a class="btn" href="/products">Подробнее</a>
+                <div class="text">{{ __('main.third.appreciate_text')}}</div>
+                <a class="btn" :href="`${locale}/products`">{{ __('main.second.more')}}</a>
             </div>
             <div class="third-section__2_img quality-section-right_js">
                 <img src="/img/drill2.png" alt="">

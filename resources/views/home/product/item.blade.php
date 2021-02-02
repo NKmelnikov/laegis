@@ -11,7 +11,7 @@
 @endsection
 
 <main class="products-home-wrapper">
-    @include('layouts/header-second', ['message' => 'Продукция'])
+    @include('layouts/header-second', ['message' =>  __('product.index.products')])
 
     <div class="home-product-wrapper container">
         <div class="product-home-cloak"></div>

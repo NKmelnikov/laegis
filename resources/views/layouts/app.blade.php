@@ -10,7 +10,11 @@
     @yield('content')
     @include('layouts.footer')
 </main>
-
+<script>
+    window._locale = '{{ app()->getLocale() }}';
+    window._translations = {!! cache('translations') !!};
+</script>
 @include('layouts.scripts')
+
 </body>
 </html>

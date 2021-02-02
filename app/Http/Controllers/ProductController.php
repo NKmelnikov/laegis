@@ -207,7 +207,7 @@ class ProductController extends Controller
     }
 
     public function getItem(Request $request) {
-        return $this->productService->getBySlug($request);
+        return response()->json($this->productService->getBySlug($request));
     }
 
     public function getCategory(Request $request) {

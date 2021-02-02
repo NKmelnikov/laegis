@@ -8,11 +8,11 @@
         </div>
         <div class="form-input">
             <label>
-                <textarea v-model="text" rows="2" required></textarea>
-                <span class="placeholder">Вопрос</span>
+                <textarea maxlength="500" v-model="text" rows="2" required></textarea>
+                <span class="placeholder">{{ __('layouts.footer.question') }}</span>
             </label>
         </div>
-        <button id="cf-submit" type="submit" class="button" @click="sendMessageTelegram(getSendObject())">Отправить</button>
+        <button id="cf-submit" type="submit" class="button" @click="sendMessageTelegram(getSendObject())">{{  __('layouts.footer.send') }}</button>
         <ul class="errors">
             <li v-for="err in errors">{{ err }}</li>
         </ul>
@@ -35,6 +35,8 @@ export default {
         this.$recaptchaLoaded().then(() => {
             this.initRecaptcha();
         })
+        console.log(window._locale);
+        console.log(window._translations);
     },
     data: () => ({
         recaptchaToken: null,

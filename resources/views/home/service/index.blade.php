@@ -18,18 +18,18 @@
         </div>
         <div class="first-section-goToService-sector">
             <div class="first-section-goToService-sector__left goToService-sector-item">
-                <div class="title-box title-box-left">{!! __('service/index.complex_metalworking') !!}</div>
+                <div class="title-box title-box-left">{!! __('service.index.complex_metalworking') !!}</div>
                 <a
                     class="goToService-btn goToService-btn-left"
                     href="{{ sprintf('/%s/services/metalworking', app()->getLocale())  }}"
-                >{!! __('service/index.go_to_section') !!}</a>
+                >{!! __('service.index.go_to_section') !!}</a>
             </div>
             <div class="first-section-goToService-sector__right goToService-sector-item">
-                <div class="title-box title-box-right">{!! __('service/index.tool_recovery') !!}</div>
+                <div class="title-box title-box-right">{!! __('service.index.tool_recovery') !!}</div>
                 <a
                     class="goToService-btn goToService-btn-left"
                     href="{{ sprintf('/%s/services/recovery', app()->getLocale())  }}"
-                >{!! __('service/index.go_to_section') !!}</a>
+                >{!! __('service.index.go_to_section') !!}</a>
             </div>
         </div>
     </section>

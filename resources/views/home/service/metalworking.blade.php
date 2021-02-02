@@ -11,24 +11,24 @@
 @endsection
 
 <main class="services-metalworking-home-wrapper">
-    @include('layouts.header-second', ['message' => __('service/index.complex_metalworking')])
+    @include('layouts.header-second', ['message' => __('service.index.complex_metalworking')])
     <div class="breadcrumbs container" id="breadcrumbs-products">
         <a
             class="breadcrumbs__item"
             href="{{ sprintf('/%s/',app()->getLocale()) }}"
-        >{{ __('layouts/header.main') }}</a>
+        >{{ __('layouts.header.main') }}</a>
         <span class="breadcrumbs__divider">
       &nbsp;/&nbsp;
     </span>
         <a
             class="breadcrumbs__item"
             href="{{ sprintf('/%s/services',app()->getLocale()) }}"
-        >{{ __('layouts/header.services') }}</a>
+        >{{ __('layouts.header.services') }}</a>
         <span
             class="breadcrumbs__divider">
       &nbsp;/&nbsp;
     </span>
-        <a class="breadcrumbs__item current" >{{ __('service/metalworking.header') }}</a>
+        <a class="breadcrumbs__item current" >{{ __('service.metalworking.header') }}</a>
     </div>
     <section class="metalworking-wrapper container">
         <div class="metalworking-wrapper__box first-section">
@@ -36,46 +36,46 @@
                 <img src="{{ asset('img/metalworking/metalworking-title-image.jpg') }}" alt="металлообработка">
             </div>
             <div class="text-container">
-                <div class="title">{{ __('service/metalworking.title') }}</div>
+                <div class="title">{{ __('service.metalworking.title') }}</div>
                 <div class="line"></div>
                 <div class="text">
-                    <p>{{ __('service/metalworking.p1') }}</p>
-                    <p>{{ __('service/metalworking.p2') }}</p>
+                    <p>{{ __('service.metalworking.p1') }}</p>
+                    <p>{{ __('service.metalworking.p2') }}</p>
                 </div>
             </div>
         </div>
         <div class="metalworking-wrapper__box second-section">
-            <div class="title">{{ __('service/metalworking.services_we_offer') }}</div>
+            <div class="title">{{ __('service.metalworking.services_we_offer') }}</div>
             <div class="services">
                 <div class="services__item ">
                     <div class="img tokar"></div>
-                    <p class="text">{{ __('service/metalworking.service1') }}</p>
+                    <p class="text">{{ __('service.metalworking.service1') }}</p>
                 </div>
                 <div class="services__item ">
                     <div class="img frez"></div>
-                    <p class="text">{{ __('service/metalworking.service2') }}</p>
+                    <p class="text">{{ __('service.metalworking.service2') }}</p>
                 </div>
                 <div class="services__item ">
                     <div class="img termo"></div>
-                    <p class="text">{{ __('service/metalworking.service3') }}</p>
+                    <p class="text">{{ __('service.metalworking.service3') }}</p>
                 </div>
                 <div class="services__item ">
                     <div class="img nakat"></div>
-                    <p class="text">{{ __('service/metalworking.service4') }}</p>
+                    <p class="text">{{ __('service.metalworking.service4') }}</p>
                 </div>
             </div>
         </div>
         <div class="metalworking-wrapper__box third-section">
-            <div class="title">{{ __('service/metalworking.processed_materials') }}</div>
+            <div class="title">{{ __('service.metalworking.processed_materials') }}</div>
             <ul class="metalworking-list">
-                <li class="metalworking-list__item">{{ __('service/metalworking.material1') }}</li>
-                <li class="metalworking-list__item">{{ __('service/metalworking.material2') }}</li>
-                <li class="metalworking-list__item">{{ __('service/metalworking.material3') }}</li>
-                <li class="metalworking-list__item">{{ __('service/metalworking.material4') }}</li>
+                <li class="metalworking-list__item">{{ __('service.metalworking.material1') }}</li>
+                <li class="metalworking-list__item">{{ __('service.metalworking.material2') }}</li>
+                <li class="metalworking-list__item">{{ __('service.metalworking.material3') }}</li>
+                <li class="metalworking-list__item">{{ __('service.metalworking.material4') }}</li>
             </ul>
         </div>
         <div class="metalworking-wrapper__box fourth-section">
-            <div class="title">{{ __('service/metalworking.completed_work') }}</div>
+            <div class="title">{{ __('service.metalworking.completed_work') }}</div>
             <div class="equipment-container">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">

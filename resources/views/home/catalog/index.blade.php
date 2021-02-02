@@ -9,10 +9,10 @@
     {!! JsonLd::generate() !!}
 @endsection
 <main class="catalog-home-wrapper">
-    @include('layouts.header-second', ['message'=> __('layouts/header.catalogs')])
+    @include('layouts.header-second', ['message'=> __('layouts.header.catalogs')])
     <div class="brand-container">
         <div class="brand-box container">
-            <div class="brand-box__title">{{ __('catalog/index.select_manufacturer') }}</div>
+            <div class="brand-box__title">{{ __('catalog.select_manufacturer') }}</div>
             <div class="brand-box__brands">
                 @foreach ($brands as $item)
                 <div class="brand-box__keeper">
