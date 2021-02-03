@@ -147,10 +147,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/update-product-position-manually', [App\Http\Controllers\Admin\ProductController::class, 'updatePositionManually']);
 });
 
-Auth::routes([
-    'reset' => false, // Password Reset Routes...
-    'verify' => false, // Email Verification Routes...
-]);
+Auth::routes();
 
 Route::get('/', function () {
     return redirect(app()->getLocale());
