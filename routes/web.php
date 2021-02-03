@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the 'web' middleware group. Now create something great!
 |
 */
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Auth::routes();
 Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::group(['prefix' => 'home'], function () {
@@ -147,7 +144,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/update-product-position-manually', [App\Http\Controllers\Admin\ProductController::class, 'updatePositionManually']);
 });
 
-Auth::routes();
 
 Route::get('/', function () {
     return redirect(app()->getLocale());
