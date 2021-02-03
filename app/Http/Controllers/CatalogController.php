@@ -87,4 +87,9 @@ class CatalogController extends Controller
     {
         return $this->catalogService->getByBrandSlug($request);
     }
+
+    public function getAll(): JsonResponse
+    {
+        return $this->brandService->getAll();
+    }
 }
