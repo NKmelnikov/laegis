@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\Admin\CategoryService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class CategoryController
+class CategoryController extends Controller
 {
 
     private CategoryService $categoryService;
@@ -16,6 +17,8 @@ class CategoryController
     public function __construct()
     {
         $this->categoryService = new CategoryService(Category::class);
+        $this->middleware('auth');
+
     }
 
     private function getValidatorRules($isUpdateMethod = false): array

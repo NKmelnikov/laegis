@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Services\Admin\NewsService;
 use Illuminate\Contracts\Support\Renderable;
@@ -9,13 +10,15 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class NewsController
+class NewsController extends Controller
 {
     private NewsService $newsService;
 
     public function __construct()
     {
         $this->newsService = new NewsService(News::class);
+        $this->middleware('auth');
+
     }
 
     private function getValidatorRules($isUpdateMethod = false): array

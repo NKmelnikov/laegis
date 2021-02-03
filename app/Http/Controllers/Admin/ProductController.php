@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Services\Admin\ProductService;
 use Illuminate\Contracts\Support\Renderable;
@@ -9,13 +10,15 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class ProductController
+class ProductController extends Controller
 {
     private ProductService $productService;
 
     public function __construct()
     {
         $this->productService = new ProductService(Product::class);
+        $this->middleware('auth');
+
     }
 
     private function getValidatorRules($isUpdateMethod = false): array

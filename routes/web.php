@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::group(['prefix' => 'home'], function () {
     Route::get('/get-brands', [App\Http\Controllers\Admin\BrandController::class, 'getAll']);
@@ -39,7 +41,7 @@ Route::post('/upload-pdf', [App\Http\Controllers\Admin\UploadController::class, 
 Route::post('/check-recaptcha', 'RecaptchaController@checkValidity');
 
 Route::prefix('admin')->group(function () {
-    Route::view('/', 'admin.main');
+    Route::view('/', 'admin.brand.index');
 //        brands
     Route::view('/brand', 'admin.brand.index');
     Route::view('/brand/create', 'admin.brand.edit');
@@ -145,7 +147,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/update-product-position-manually', [App\Http\Controllers\Admin\ProductController::class, 'updatePositionManually']);
 });
 
-Auth::routes();
+Auth::routes([
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
 Route::get('/', function () {
     return redirect(app()->getLocale());

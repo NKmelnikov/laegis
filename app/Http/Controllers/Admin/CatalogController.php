@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Catalog;
 use App\Services\Admin\CatalogService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class CatalogController
+class CatalogController extends Controller
 {
 
     private CatalogService $catalogService;
@@ -25,6 +26,8 @@ class CatalogController
     public function __construct()
     {
         $this->catalogService = new CatalogService(Catalog::class);
+        $this->middleware('auth');
+
     }
 
     public function getCopyView(Request $request): Renderable {

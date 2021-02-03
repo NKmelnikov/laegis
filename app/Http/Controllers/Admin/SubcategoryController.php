@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Subcategory;
 use App\Services\Admin\SubcategoryService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class SubcategoryController
+class SubcategoryController extends Controller
 {
     private SubcategoryService $subcategoryService;
 
     public function __construct()
     {
         $this->subcategoryService = new SubcategoryService(Subcategory::class);
+        $this->middleware('auth');
+
     }
 
     private function getValidatorRules($isUpdateMethod = false): array

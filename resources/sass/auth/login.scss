@@ -1,0 +1,29 @@
+.login-wrapper{
+    height: calc(100vh - 548px);
+
+    .card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        .card-body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    button {
+        margin-top: 10px;
+        width: 185px;
+        height: 30px;
+        border-radius: 4px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

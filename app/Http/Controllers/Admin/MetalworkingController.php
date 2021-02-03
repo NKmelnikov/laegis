@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Metalworking;
 use App\Services\Admin\MetalworkingService;
@@ -10,13 +11,15 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class MetalworkingController
+class MetalworkingController extends Controller
 {
     private MetalworkingService $metalworkingService;
 
     public function __construct()
     {
         $this->metalworkingService = new MetalworkingService(Metalworking::class);
+        $this->middleware('auth');
+
     }
 
     private function getValidatorRules(): array

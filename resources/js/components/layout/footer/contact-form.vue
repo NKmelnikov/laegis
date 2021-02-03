@@ -35,8 +35,6 @@ export default {
         this.$recaptchaLoaded().then(() => {
             this.initRecaptcha();
         })
-        console.log(window._locale);
-        console.log(window._translations);
     },
     data: () => ({
         recaptchaToken: null,

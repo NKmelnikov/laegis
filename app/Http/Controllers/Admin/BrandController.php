@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Services\Admin\BrandService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class BrandController
+class BrandController extends Controller
 {
 
     private BrandService $brandService;
@@ -16,6 +17,7 @@ class BrandController
     public function __construct()
     {
         $this->brandService = new BrandService(Brand::class);
+        $this->middleware('auth');
     }
 
     private function getValidatorRules($isUpdateMethod = false): array {
