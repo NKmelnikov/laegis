@@ -55,7 +55,7 @@ class ServiceController extends Controller
     public function metalworking(): Renderable
     {
         $portfolio = $this->metalworkingService->getAll();
-        SEOMeta::setTitle(__('layouts.metalworking.header'), false);
+        SEOMeta::setTitle(__('service.metalworking.header'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
@@ -75,7 +75,7 @@ class ServiceController extends Controller
 
     public function recovery(): Renderable
     {
-        SEOMeta::setTitle(__('layouts.recovery.title'), false);
+        SEOMeta::setTitle(__('service.recovery.title'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
