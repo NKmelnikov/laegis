@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the 'web' middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::group(['prefix' => 'home'], function () {
