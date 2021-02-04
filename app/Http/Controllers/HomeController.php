@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function index(): Renderable
     {
         $brands = $this->brandService->getAll();
-        SEOMeta::setTitle('Home');
+        SEOMeta::setTitle(__('layouts.header.main'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 

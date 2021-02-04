@@ -27,7 +27,7 @@ class AboutController extends Controller
      */
     public function index(): Renderable
     {
-        SEOMeta::setTitle('About');
+        SEOMeta::setTitle(__('about.about'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 

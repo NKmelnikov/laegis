@@ -47,7 +47,7 @@ class ProductController extends Controller
      */
     public function index(): Renderable
     {
-        SEOMeta::setTitle('Products');
+        SEOMeta::setTitle(__('layouts.header.products'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
         OpenGraph::setDescription('This is my page description');
@@ -71,7 +71,7 @@ class ProductController extends Controller
 
     public function category(): Renderable
     {
-        SEOMeta::setTitle('Products');
+        SEOMeta::setTitle(__('layouts.header.products'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
         OpenGraph::setDescription('This is my page description');
@@ -94,7 +94,7 @@ class ProductController extends Controller
 
     public function subcategory(): Renderable
     {
-        SEOMeta::setTitle('Products');
+        SEOMeta::setTitle(__('layouts.header.products'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
         OpenGraph::setDescription('This is my page description');
@@ -118,7 +118,7 @@ class ProductController extends Controller
 
     public function brandAll(): Renderable
     {
-        SEOMeta::setTitle('Products');
+        SEOMeta::setTitle(__('layouts.header.products'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
         OpenGraph::setDescription('This is my page description');
@@ -142,7 +142,7 @@ class ProductController extends Controller
 
     public function brand(): Renderable
     {
-        SEOMeta::setTitle('Products');
+        SEOMeta::setTitle(__('layouts.header.products'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
         OpenGraph::setDescription('This is my page description');
@@ -166,7 +166,7 @@ class ProductController extends Controller
 
     public function item(): Renderable
     {
-        SEOMeta::setTitle('Products');
+        SEOMeta::setTitle(__('layouts.header.products'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
         OpenGraph::setDescription('This is my page description');

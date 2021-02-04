@@ -32,7 +32,7 @@ class NewsController extends Controller
     public function index(): Renderable
     {
         $news = News::orderBy('position')->paginate(8)->withQueryString();
-        SEOMeta::setTitle('About');
+        SEOMeta::setTitle(__('layouts.header.news'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
@@ -53,7 +53,7 @@ class NewsController extends Controller
     public function item(Request $request, $locale, $slug): Renderable
     {
         $item = $this->newsService->getBySlug($request);
-        SEOMeta::setTitle('About');
+        SEOMeta::setTitle(translate($item, 'title'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 

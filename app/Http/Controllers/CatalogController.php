@@ -42,7 +42,7 @@ class CatalogController extends Controller
     public function index(): Renderable
     {
         $brands = $this->brandService->getAll();
-        SEOMeta::setTitle('About');
+        SEOMeta::setTitle(__('layouts.header.catalogs'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
@@ -65,7 +65,7 @@ class CatalogController extends Controller
         $brand = $this->brandService->getBySlug($request);
         $catalogs = $this->catalogService->getByBrandSlug($request);
 
-        SEOMeta::setTitle('About');
+        SEOMeta::setTitle(translate($brand, 'name'), false);
         SEOMeta::setDescription('This is my page description');
         SEOMeta::setCanonical('https://codecasts.com.br/lesson');
 
